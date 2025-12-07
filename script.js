@@ -114,24 +114,3 @@ window.addEventListener('scroll', function() {
         navbar.style.background = 'rgba(45, 45, 45, 0.95)';
     }
 });
-
-document.querySelectorAll('.social-link').forEach(link => {
-    link.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateX(10px)';
-    });
-
-    link.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateX(0)';
-    });
-});
-
-
-document.querySelectorAll('.footer-skills span').forEach(skill => {
-    skill.addEventListener('mouseenter', function() {
-        this.style.transform = 'translateY(-5px) scale(1.1)';
-    });
-
-    skill.addEventListener('mouseleave', function() {
-        this.style.transform = 'translateY(0) scale(1)';
-    });
-});
