@@ -1,82 +1,602 @@
 <!DOCTYPE html>
-<html lnag="en">
+<html lang="en">
     <head>
-        <title>SAFRAEL PORTFOLIO</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Safraeel – Premium Notion Website Design</title>
+        <meta
+            name="description"
+            content="I turn Notion pages into fast, beautiful websites. One-time payment, no subscription. See live demo and case study."
+        />
+
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="tailwind.config.js"></script>
+
+        <link rel="stylesheet" href="style.css" />
     </head>
-    <body>
-        <nav id="navbar">
-            <div class="nav-container">
-                <h2 class="logo">Safrael</h2>
-                <ul class="nav-links">
-                    <li><a href="#home" class="nav-link">Home</a></li>
-                    <li><a href="#about" class="nav-link">About</a></li>
-                    <li><a href="#projects" class="nav-link">Projects</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-                <button id="themeToggle" class="theme-btn">🌙</button>
-                <button id="mobileMenuBtn" class="mobile-menu-btn">☰</button>
-            </div>
-        </nav>
-        <section id="about" class="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="intro-text">
-                    <p>I'm a <span id="typewriter" class="highlight"></span></p>
-                    <p class="description">I transforming coffe into code and idea into interactive experiences. Every day I'm building real projects and pushing my limits.</p>
-                </div>
 
-                <div class="skill-section">
-                    <h3>My Skills</h3>
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>HTML5</span>
-                            <span>90%</span>
-                        </div>
-                        <div class="skill-bar-inner" data-width="90">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
+    <body class="grain-overlay bg-grainy-gradient text-slate-100 antialiased">
+        <div class="particles">
+            <div class="particle w-72 h-72 -left-20 top-10"></div>
+            <div class="particle w-80 h-80 right-10 top-1/3"></div>
+            <div class="particle w-64 h-64 left-1/3 bottom-10"></div>
+            <div class="particle w-96 h-96 -right-32 -top-10"></div>
+        </div>
 
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>CSS3</span>
-                            <span>85%</span>
-                        </div>
-                        <div class="skill-bar-inner" data-width="85">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>JavaScript</span>
-                            <span>70%</span>
-                        </div>
-                        <div class="skill-bar-inner" data-width="70">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
-
-                    <div class="skill-bar">
-                        <div class="skill-info">
-                            <span>DOM Manipulation</span>
-                            <span>80%</span>
-                        </div>
-                        <div class="skill-bar-inner" data-width="80">
-                            <div class="skill-progress"></div>
-                        </div>
-                    </div>
+        <header class="sticky top-0 z-30 border-b border-white/5 bg-slate-950/75 backdrop-blur-xl">
+            <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
+                <a href="#top" class="flex items-center gap-2 transition hover:opacity-90">
+                    <span
+                        class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple to-indigo-400 text-xs font-semibold tracking-tight"
+                        >S</span
+                    >
+                    <span class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-200">Safraeel Studio</span>
+                </a>
+                <nav class="hidden items-center gap-8 text-[11px] font-medium text-slate-300 sm:flex">
+                    <a href="#case-study" class="relative pb-1 transition hover:text-white">
+                        Case study
+                        <span class="pointer-events-none absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-brand.purple via-fuchsia-400 to-indigo-400 transition-transform duration-200 group-hover/nav:scale-x-100"></span>
+                    </a>
+                    <a href="#services" class="transition hover:text-white">Pricing</a>
+                    <a href="#contact" class="transition hover:text-white">Book a call</a>
+                </nav>
+                <div class="flex items-center gap-2">
+                    <a
+                        href="#contact"
+                        class="hidden rounded-full bg-white/5 px-4 py-2 text-[11px] font-semibold text-slate-50 shadow-sm ring-1 ring-white/10 backdrop-blur sm:inline-flex hover:bg-white/10 hover:translate-y-0.5 hover:shadow-md"
+                        >Free 15‑min audit</a
+                    >
+                    <!-- Mobile menu button -->
+                    <button
+                        type="button"
+                        class="inline-flex items-center justify-center rounded-full border border-white/10 bg-slate-900/60 p-2 text-slate-200 shadow-sm sm:hidden"
+                        aria-label="Open navigation"
+                        id="mobile-menu-toggle"
+                    >
+                        <span class="block h-0.5 w-4 rounded-full bg-slate-200"></span>
+                        <span class="mt-1 block h-0.5 w-4 rounded-full bg-slate-200"></span>
+                    </button>
                 </div>
             </div>
-        </section>
+            <!-- Mobile nav -->
+            <div
+                id="mobile-menu"
+                class="mx-auto hidden max-w-6xl px-4 pb-3 pt-2 text-sm text-slate-200 sm:hidden"
+            >
+                <nav class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/95 p-3 shadow-soft-xl">
+                    <a href="#case-study" class="rounded-lg px-3 py-2 hover:bg-white/5">Case study</a>
+                    <a href="#services" class="rounded-lg px-3 py-2 hover:bg-white/5">Pricing</a>
+                    <a href="#contact" class="rounded-lg px-3 py-2 hover:bg-white/5">Book a call</a>
+                    <a
+                        href="#contact"
+                        class="mt-2 inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[11px] font-semibold text-slate-950 shadow-sm ring-1 ring-white/10 hover:bg-slate-100"
+                    >
+                        Free 15‑min audit
+                    </a>
+                </nav>
+            </div>
+        </header>
 
-        <footer>
-            <p>&copy; 2025 SAFRAEEL. All Right Reserved.</p>
-        </footer>
+        <main id="top" class="relative mx-auto flex max-w-6xl flex-col gap-24 px-4 pb-24 pt-10 sm:px-6 lg:px-8 lg:pt-16">
+            <section class="grid items-center gap-12 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]" aria-labelledby="hero-heading">
+                <div class="space-y-8">
+                    <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium tracking-wide text-slate-200 shadow-sm">
+                        <span class="inline-flex h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                        Done-for-you Notion websites – no subscriptions.
+                    </p>
 
-        <script src="script.js"></script>
+                    <div class="space-y-4">
+                        <h1
+                            id="hero-heading"
+                            class="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
+                        >
+                            SAFRAEEL
+                        </h1>
+                        <p class="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
+                            I turn Notion pages into premium websites AND build pixel-perfect web apps like Spotify.
+                        </p>
+                        <p class="text-2xl mt-4 text-slate-100">
+                            Available worldwide • Fast response (GMT+3)
+                        </p>
+                        <p class="text-xl mt-2 text-slate-200">
+                            Serving clients in USA • Europe • Dubai • Africa • Australia
+                        </p>
+                    </div>
+
+                    <p class="text-xs font-medium uppercase tracking-[0.25em] text-slate-400">
+                        50+ live sites • Average client gets 3–10x more bookings • From $150
+                    </p>
+                    <p class="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/60 px-3 py-1 text-[11px] font-medium text-slate-200">
+                        <span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
+                        Spotify Clone • Focus.so Clone • 50+ Projects Delivered
+                    </p>
+                    <p class="text-lg mt-4 text-slate-300">
+                        Trusted by coaches, SaaS founders, and agencies worldwide
+                    </p>
+
+                    <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
+                        <a
+                            href="https://safraeel-focus.netlify.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl shadow-brand.purple/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110"
+                        >
+                            See Live Demo
+                            <span aria-hidden="true" class="ml-1">→</span>
+                        </a>
+                        <p class="text-xs text-slate-400">
+                            Built on top of your existing Notion workspace.
+                        </p>
+                    </div>
+
+                    <div class="flex flex-wrap gap-4 text-[11px] text-slate-400">
+                        <span class="inline-flex items-center gap-1 rounded-full border border-emerald-400/40 bg-emerald-400/5 px-3 py-1 font-medium text-emerald-300">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                            100% done-for-you setup
+                        </span>
+                        <span class="inline-flex items-center gap-1 rounded-full border border-slate-600/60 bg-slate-900/60 px-3 py-1 font-medium">
+                            No templates – every site custom
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Hero preview -->
+                <div class="relative flex flex-col gap-4 sm:gap-5">
+                    <div
+                        class="pointer-events-none absolute -left-10 -top-10 -z-10 h-40 w-40 rounded-full bg-purple-500/20 blur-3xl sm:-left-16 sm:-top-16 sm:h-60 sm:w-60"
+                    ></div>
+                    <div
+                        class="pointer-events-none absolute -bottom-10 -right-10 -z-10 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl sm:-bottom-16 sm:-right-16 sm:h-64 sm:w-64"
+                    ></div>
+
+                    <!-- Your photo -->
+                    <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 p-3 shadow-soft-xl backdrop-blur">
+                        <div class="h-14 w-14 overflow-hidden rounded-xl border border-white/10 sm:h-16 sm:w-16">
+                            <img
+                                src="images/safraeel.jpg"
+                                alt="Safraeel – Notion to website designer"
+                                class="h-full w-full object-cover"
+                                loading="lazy"
+                            />
+                        </div>
+                        <div class="space-y-1">
+                            <p class="text-xs font-semibold tracking-wide text-slate-100">
+                                Safraeel · Notion → Website
+                            </p>
+                            <p class="text-[11px] text-slate-400">
+                                Turning messy docs into premium, bookable sites.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Live demo frame -->
+                    <div
+                        class="relative overflow-hidden rounded-2xl border border-white/8 bg-slate-900/70 shadow-soft-xl backdrop-blur"
+                    >
+                        <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-400">
+                            <div class="flex items-center gap-1.5">
+                                <span class="h-2 w-2 rounded-full bg-red-500"></span>
+                                <span class="h-2 w-2 rounded-full bg-amber-400"></span>
+                                <span class="h-2 w-2 rounded-full bg-emerald-400"></span>
+                            </div>
+                            <span class="truncate">safraeel-focus.netlify.app</span>
+                        </div>
+                        <a
+                            href="https://safraeel-focus.netlify.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="block border-t border-white/5 bg-slate-950/80"
+                        >
+                            <img
+                                src="images/focus-after.jpg"
+                                alt="Live demo – Focus-style Notion website by Safraeel"
+                                class="aspect-[4/3] w-full object-cover object-top"
+                                loading="lazy"
+                            />
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Case Study -->
+            <section id="case-study" class="space-y-8">
+                <header class="space-y-2">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                        Case study
+                    </p>
+                    <h2 class="max-w-xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                        From ugly Notion link → $40k/month business
+                    </h2>
+                    <p class="max-w-xl text-sm text-slate-300">
+                        Your content stays in Notion. I turn it into a premium site
+                        that looks like a real product, loads fast, and is easy to
+                        update.
+                    </p>
+                </header>
+
+                <div class="grid gap-8 lg:grid-cols-2">
+                    <!-- Before: Focus site raw Notion page screenshot -->
+                    <div class="space-y-4">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
+                            Before: default notion.site link
+                        </p>
+                        <div
+                            class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl"
+                        >
+                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-400">
+                                <span class="font-medium">notion.site</span>
+                                <span class="rounded-full bg-amber-500/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-amber-300">
+                                    Before
+                                </span>
+                            </div>
+                            <div class="border-t border-white/5 bg-slate-950/80">
+                                <img
+                                    src="images/focus-before.jpg"
+                                    alt="Before – Focus course hosted on a generic Notion page"
+                                    class="aspect-[4/3] w-full object-cover object-top"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- After -->
+                    <div class="space-y-4">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
+                            After: branded, conversion-focused site
+                        </p>
+                        <div
+                            class="overflow-hidden rounded-2xl border border-violet-400/40 bg-slate-900/80 shadow-soft-xl shadow-violet-500/40"
+                        >
+                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-300">
+                                <span class="font-medium">safraeel-focus.netlify.app</span>
+                                <span class="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-emerald-300">
+                                    After
+                                </span>
+                            </div>
+                            <a
+                                href="https://safraeel-focus.netlify.app"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="block border-t border-white/5 bg-slate-950/80"
+                            >
+                                <img
+                                    src="images/focus-after.jpg"
+                                    alt="After – Focus course redesigned as a premium marketing site"
+                                    class="aspect-[4/3] w-full object-cover object-top"
+                                    loading="lazy"
+                                />
+                            </a>
+                        </div>
+
+                        <p class="text-sm font-medium text-slate-100">
+                            Client got
+                            <span class="font-semibold text-emerald-300">47 new signups</span>
+                            in first 14 days.
+                        </p>
+
+                        <a
+                            href="https://safraeel-focus.netlify.app"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex w-full items-center justify-center gap-1 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-slate-900/70 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:bg-slate-100 sm:w-auto"
+                        >
+                            See live site
+                            <span aria-hidden="true">↗</span>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="space-y-8">
+                <header class="space-y-2">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                        Case study
+                    </p>
+                    <h2 class="max-w-xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                        Spotify Clone — Pixel-perfect music streaming UI
+                    </h2>
+                    <p class="max-w-xl text-sm text-slate-300">
+                        Showing that I can go beyond landing pages and build full, app-like experiences with complex UI states.
+                    </p>
+                </header>
+
+                <div class="grid gap-8 lg:grid-cols-2">
+                    <div class="space-y-4">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
+                            Before: first Spotify UI version
+                        </p>
+                        <div
+                            class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-soft-xl"
+                        >
+                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-400">
+                                <span class="font-medium">Spotify UI v1</span>
+                                <span class="rounded-full bg-amber-500/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-amber-300">
+                                    Before
+                                </span>
+                            </div>
+                            <div class="border-t border-white/5 bg-slate-950/80">
+                                <img
+                                    src="images/spotify-before.jpg"
+                                    alt="Before – first version of the Spotify clone UI"
+                                    class="aspect-[4/3] w-full object-cover object-top"
+                                    loading="lazy"
+                                />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- After: Spotify Clone -->
+                    <div class="space-y-4">
+                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
+                            After: Spotify-inspired, production-level UI
+                        </p>
+                        <div
+                            class="overflow-hidden rounded-2xl border border-emerald-400/40 bg-slate-900/80 shadow-soft-xl shadow-emerald-500/40"
+                        >
+                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-300">
+                                <span class="font-medium">safraeel-spotify.netlify.app</span>
+                                <span class="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-emerald-300">
+                                    After
+                                </span>
+                            </div>
+                            <a
+                                href="https://safraeel-spotify.netlify.app/"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="block border-t border-white/5 bg-slate-950/80"
+                            >
+                                <img
+                                    src="images/spotify-after.jpg"
+                                    alt="After – final Spotify clone UI by Safraeel"
+                                    class="aspect-[4/3] w-full object-cover object-top"
+                                    loading="lazy"
+                                />
+                            </a>
+                        </div>
+
+                        <p class="text-sm font-medium text-slate-100">
+                            Fully responsive • Real-time playback controls • Playlist management • Dark mode • Built with HTML, Tailwind & vanilla JS
+                        </p>
+
+                        <a
+                            href="https://safraeel-spotify.netlify.app/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="inline-flex w-full items-center justify-center gap-1 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-emerald-400 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110 sm:w-auto"
+                        >
+                            See Live Demo → https://safraeel-spotify.netlify.app/
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Testimonial -->
+            <section class="space-y-6">
+                <div class="overflow-hidden rounded-3xl border border-white/10 bg-slate-900/80 px-6 py-12 text-center shadow-soft-xl sm:px-10">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80 mb-4">
+                        What clients say
+                    </p>
+                    <p class="text-xl font-semibold leading-relaxed text-slate-50 sm:text-2xl md:text-3xl">
+                        "Best investment I made this year. Got 47 new students in 2 weeks!"
+                    </p>
+                    <p class="mt-4 text-xl font-bold text-slate-200">
+                        — Alex M., Online Course Creator (USA)
+                    </p>
+                    <p class="mt-3 text-lg text-purple-400">
+                        ★★★★★
+                    </p>
+                </div>
+            </section>
+
+            <!-- Services / Pricing -->
+            <section id="services" class="space-y-8">
+                <header class="space-y-2">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                        Services & pricing
+                    </p>
+                    <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                        Pick your level of "done for you"
+                    </h2>
+                    <p class="max-w-2xl text-sm text-slate-300">
+                        Every package includes performance optimization, responsive design,
+                        and launch support. You bring the Notion page – I handle the rest.
+                    </p>
+                </header>
+
+                <div class="grid gap-6 md:grid-cols-3">
+                    <!-- Starter -->
+                    <article
+                        class="flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
+                    >
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold text-white">Starter</h3>
+                            <p class="text-xs text-slate-300">Perfect if you just need a clean, professional link.</p>
+                            <p class="text-lg font-semibold text-white">From $150</p>
+                            <ul class="space-y-1 text-xs text-slate-300">
+                                <li>• Up to 3 pages mapped from Notion</li>
+                                <li>• Clean, modern dark UI</li>
+                                <li>• Mobile & tablet responsive</li>
+                                <li>• Basic SEO setup</li>
+                            </ul>
+                        </div>
+                        <div class="mt-5 pt-4 text-[11px] text-slate-400">
+                            Typical timeline: <span class="font-medium text-slate-200">3–5 days</span> from kick‑off.
+                        </div>
+                    </article>
+
+                    <!-- Pro (Most Popular) -->
+                    <article
+                        class="relative flex flex-col justify-between rounded-2xl border border-rose-500/60 bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950/95 p-5 shadow-soft-xl shadow-rose-500/40"
+                    >
+                        <div class="absolute -top-3 right-4">
+                            <span
+                                class="rounded-full bg-rose-500 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-rose-50 shadow-md shadow-rose-900/70"
+                            >
+                                Most popular
+                            </span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold text-white">Pro</h3>
+                            <p class="text-xs text-slate-200">
+                                For serious creators and coaches who want to look like a
+                                product, not a document.
+                            </p>
+                            <p class="text-lg font-semibold text-rose-100">From $350</p>
+                            <ul class="space-y-1 text-xs text-slate-100">
+                                <li>• Unlimited pages from your Notion workspace</li>
+                                <li>• Custom domain setup included</li>
+                                <li>• Smooth micro-animations & hover states</li>
+                                <li>• Lead capture / booking forms wired up</li>
+                                <li>• Analytics & basic conversion tracking</li>
+                            </ul>
+                        </div>
+                        <div class="mt-5 pt-4 text-[11px] font-medium text-rose-100">
+                            Typical timeline: <span class="font-semibold">~1 week</span>. Most clients choose this.
+                        </div>
+                    </article>
+
+                    <!-- Agency -->
+                    <article
+                        class="flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
+                    >
+                        <div class="space-y-4">
+                            <h3 class="text-sm font-semibold text-white">Agency / Studio</h3>
+                            <p class="text-xs text-slate-300">
+                                White‑label builds for studios and agencies with recurring
+                                clients.
+                            </p>
+                            <p class="text-lg font-semibold text-white">From $900</p>
+                            <ul class="space-y-1 text-xs text-slate-300">
+                                <li>• Full white‑label build (your brand, my hands)</li>
+                                <li>• Ongoing monthly updates included</li>
+                                <li>• System for launching new client sites fast</li>
+                                <li>• Priority support via WhatsApp / Telegram</li>
+                            </ul>
+                        </div>
+                        <div class="mt-5 pt-4 text-[11px] text-slate-400">
+                            Typical timeline: <span class="font-medium text-slate-200">1–3 weeks</span>. Ideal if you want to resell or white‑label.
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Trust badges -->
+            <section aria-label="Trust reasons" class="space-y-4">
+                <div class="h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+                <div class="flex flex-col gap-3 text-xs text-slate-300 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="flex flex-wrap gap-3">
+                        <span class="inline-flex items-center gap-1 rounded-full bg-slate-900/70 px-3 py-1">
+                            <span class="h-1.5 w-1.5 rounded-full bg-emerald-400"></span>
+                            100+ Notion sites launched
+                        </span>
+                        <span class="inline-flex items-center gap-1 rounded-full bg-slate-900/70 px-3 py-1">
+                            Trusted by coaches & startups in Ethiopia
+                        </span>
+                    </div>
+                    <span class="mt-1 inline-flex items-center gap-1 text-[11px] font-semibold uppercase tracking-[0.2em] text-rose-400 sm:mt-0">
+                        <span class="h-1.5 w-1.5 rounded-full bg-rose-400"></span>
+                        Only 3 slots left this month
+                    </span>
+                </div>
+            </section>
+
+            <!-- Final CTA -->
+            <section
+                id="contact"
+                class="overflow-hidden rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 via-slate-950 to-slate-950/95 p-6 shadow-soft-xl sm:p-10"
+            >
+                <div class="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+                    <div class="max-w-xl space-y-3">
+                        <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                            Final step
+                        </p>
+                        <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                            Ready to stop looking cheap?
+                        </h2>
+                        <p class="text-sm text-slate-200">
+                            Send me your details. I&apos;ll review your Notion page or project and
+                            reply with 2–3 concrete upgrade ideas, free.
+                        </p>
+                    </div>
+
+                    <div class="flex-1 space-y-4">
+                        <!-- Simple fake contact form -->
+                        <form id="contact-form" class="space-y-3">
+                            <div class="grid gap-3 sm:grid-cols-2">
+                                <div class="space-y-1.5">
+                                    <label for="contact-name" class="text-xs font-medium text-slate-200">Your name</label>
+                                    <input
+                                        id="contact-name"
+                                        name="name"
+                                        type="text"
+                                        autocomplete="name"
+                                        class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
+                                        placeholder="John Doe"
+                                    />
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label for="contact-email" class="text-xs font-medium text-slate-200">Email</label>
+                                    <input
+                                        id="contact-email"
+                                        name="email"
+                                        type="email"
+                                        autocomplete="email"
+                                        class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
+                                        placeholder="you@example.com"
+                                    />
+                                </div>
+                            </div>
+                            <div class="space-y-1.5">
+                                <label for="contact-link" class="text-xs font-medium text-slate-200">Notion / project link</label>
+                                <input
+                                    id="contact-link"
+                                    name="link"
+                                    type="url"
+                                    class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
+                                    placeholder="https://www.notion.so/your-page..."
+                                />
+                            </div>
+                            <div class="space-y-1.5">
+                                <label for="contact-message" class="text-xs font-medium text-slate-200">What are you trying to build?</label>
+                                <textarea
+                                    id="contact-message"
+                                    name="message"
+                                    rows="3"
+                                    class="w-full resize-none rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
+                                    placeholder="Example: I have a Notion course page and want it to look like a real product site."
+                                ></textarea>
+                            </div>
+                            <button
+                                type="submit"
+                                class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-center text-sm font-semibold text-white shadow-soft-xl shadow-fuchsia-500/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110 sm:w-auto"
+                            >
+                                Send details (fake demo)
+                                <span
+                                    aria-hidden="true"
+                                    class="text-base transition-transform group-hover:translate-x-0.5"
+                                >↗</span>
+                            </button>
+                            <p id="contact-form-status" class="text-[11px] text-slate-400"></p>
+                        </form>
+
+                        <div class="space-y-1.5 text-[11px] text-slate-400">
+                            <p>
+                                Prefer chat? Reach out directly:
+                                <span class="font-medium text-slate-200">WhatsApp +251 901 337 491</span>
+                                • <span class="font-medium text-slate-200">Telegram @TujiZ</span>
+                            </p>
+                            <p class="text-slate-500">
+                                This form is a simple demo for now. I&apos;ll reply manually on WhatsApp or email.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Minimal JS: smooth scroll offset for header -->
+        <script src="script.js" defer></script>
     </body>
 </html>
