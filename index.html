@@ -3,14 +3,14 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Safraeel – Premium Notion Website Design</title>
+        <title>Safraeel Portfolio</title>
         <meta
             name="description"
             content="I turn Notion pages into fast, beautiful websites. One-time payment, no subscription. See live demo and case study."
         />
 
-        <script src="https://cdn.tailwindcss.com"></script>
         <script src="tailwind.config.js"></script>
+        <script src="https://cdn.tailwindcss.com"></script>
 
         <link rel="stylesheet" href="style.css" />
     </head>
@@ -25,16 +25,26 @@
 
         <header class="sticky top-0 z-30 border-b border-white/5 bg-slate-950/75 backdrop-blur-xl">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
-                <a href="#top" class="flex items-center gap-2 transition hover:opacity-90">
-                    <span
-                        class="inline-flex h-7 w-7 items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple to-indigo-400 text-xs font-semibold tracking-tight"
-                        >S</span
-                    >
+                <a href="#top" class="site-logo flex items-center gap-2 transition hover:opacity-90" aria-label="Safraeel Studio home">
+                    <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="logoTitle" xmlns="http://www.w3.org/2000/svg" class="rounded-full">
+                        <title id="logoTitle">Safraeel Studio logo</title>
+                        <defs>
+                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
+                                <stop offset="0%" stop-color="#a855f7" />
+                                <stop offset="100%" stop-color="#6366f1" />
+                            </linearGradient>
+                            <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
+                                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.35" />
+                            </filter>
+                        </defs>
+                        <rect width="32" height="32" rx="8" fill="url(#g1)" filter="url(#logoShadow)" />
+                        <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="800" fill="white">S</text>
+                    </svg>
                     <span class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-200">Safraeel Studio</span>
                 </a>
                 <nav class="hidden items-center gap-8 text-[11px] font-medium text-slate-300 sm:flex">
-                    <a href="#case-study" class="relative pb-1 transition hover:text-white">
-                        Case study
+                    <a href="#projects" class="relative pb-1 transition hover:text-white">
+                        Projects
                         <span class="pointer-events-none absolute inset-x-0 -bottom-0.5 h-px origin-center scale-x-0 bg-gradient-to-r from-brand.purple via-fuchsia-400 to-indigo-400 transition-transform duration-200 group-hover/nav:scale-x-100"></span>
                     </a>
                     <a href="#services" class="transition hover:text-white">Pricing</a>
@@ -42,9 +52,10 @@
                 </nav>
                 <div class="flex items-center gap-2">
                     <a
+                        id="nav-cta"
                         href="#contact"
-                        class="hidden rounded-full bg-white/5 px-4 py-2 text-[11px] font-semibold text-slate-50 shadow-sm ring-1 ring-white/10 backdrop-blur sm:inline-flex hover:bg-white/10 hover:translate-y-0.5 hover:shadow-md"
-                        >Free 15‑min audit</a
+                        class="nav-cta hidden rounded-full px-4 py-2 text-[11px] font-semibold text-slate-50 shadow-sm ring-1 ring-white/10 backdrop-blur sm:inline-flex hover:translate-y-0.5 hover:shadow-md"
+                        >Get Audit</a
                     >
                     <!-- Mobile menu button -->
                     <button
@@ -63,15 +74,16 @@
                 id="mobile-menu"
                 class="mx-auto hidden max-w-6xl px-4 pb-3 pt-2 text-sm text-slate-200 sm:hidden"
             >
+                    <div class="mobile-backdrop" aria-hidden="true"></div>
                 <nav class="flex flex-col gap-2 rounded-2xl border border-white/10 bg-slate-950/95 p-3 shadow-soft-xl">
-                    <a href="#case-study" class="rounded-lg px-3 py-2 hover:bg-white/5">Case study</a>
+                    <a href="#projects" class="rounded-lg px-3 py-2 hover:bg-white/5">Projects</a>
                     <a href="#services" class="rounded-lg px-3 py-2 hover:bg-white/5">Pricing</a>
                     <a href="#contact" class="rounded-lg px-3 py-2 hover:bg-white/5">Book a call</a>
                     <a
                         href="#contact"
                         class="mt-2 inline-flex items-center justify-center rounded-full bg-white px-4 py-2 text-[11px] font-semibold text-slate-950 shadow-sm ring-1 ring-white/10 hover:bg-slate-100"
                     >
-                        Free 15‑min audit
+                        Get Audit
                     </a>
                 </nav>
             </div>
@@ -90,16 +102,13 @@
                             id="hero-heading"
                             class="text-5xl font-black tracking-tight text-white sm:text-6xl lg:text-7xl"
                         >
-                            SAFRAEEL
+                            From Notion Link → Paying Customers
                         </h1>
-                        <p class="max-w-xl text-sm leading-relaxed text-slate-300 sm:text-base">
-                            I turn Notion pages into premium websites AND build pixel-perfect web apps like Spotify.
+                        <p class="max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-lg">
+                            50+ sites launched. Clients typically see 3–10× more bookings after a redesign — launch in days.
                         </p>
-                        <p class="text-2xl mt-4 text-slate-100">
-                            Available worldwide • Fast response (GMT+3)
-                        </p>
-                        <p class="text-xl mt-2 text-slate-200">
-                            Serving clients in USA • Europe • Dubai • Africa • Australia
+                        <p class="text-sm mt-3 text-slate-400">
+                            Fast, conversion-focused websites built from your Notion content. No subscriptions — one-time builds starting from $150.
                         </p>
                     </div>
 
@@ -116,17 +125,25 @@
 
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
                         <a
+                                href="#contact"
+                                class="cta-animate inline-flex items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl shadow-brand.purple/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110"
+                            >
+                                Get Audit
+                                <span aria-hidden="true" class="ml-1">→</span>
+                            </a>
+                        <a
                             href="https://safraeel-focus.netlify.app"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl shadow-brand.purple/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110"
+                            class="inline-flex items-center justify-center rounded-full bg-white/5 px-4 py-2 text-sm font-semibold text-slate-100 shadow-sm ring-1 ring-white/10 transition hover:translate-y-0.5 sm:ml-3"
                         >
                             See Live Demo
-                            <span aria-hidden="true" class="ml-1">→</span>
                         </a>
-                        <p class="text-xs text-slate-400">
-                            Built on top of your existing Notion workspace.
-                        </p>
+                        <div class="trust-row">
+                            <div class="trust-pill"><span class="trust-dot" aria-hidden="true"></span><span>50+ live sites</span></div>
+                            <div class="trust-pill"><span class="trust-dot" style="background:#34d399"></span><span>3–10× avg. bookings</span></div>
+                            <div class="trust-pill"><span class="trust-dot" style="background:#60a5fa"></span><span>Fast replies • GMT+3</span></div>
+                        </div>
                     </div>
 
                     <div class="flex flex-wrap gap-4 text-[11px] text-slate-400">
@@ -150,8 +167,8 @@
                     ></div>
 
                     <!-- Your photo -->
-                    <div class="flex items-center gap-3 rounded-2xl border border-white/10 bg-slate-900/60 p-3 shadow-soft-xl backdrop-blur">
-                        <div class="h-14 w-14 overflow-hidden rounded-xl border border-white/10 sm:h-16 sm:w-16">
+                    <div class="flex items-center gap-4 rounded-2xl border border-white/10 bg-slate-900/60 p-3 shadow-soft-xl backdrop-blur">
+                        <div class="h-20 w-20 overflow-hidden rounded-xl border border-white/10 sm:h-24 sm:w-24">
                             <img
                                 src="images/safraeel.jpg"
                                 alt="Safraeel – Notion to website designer"
@@ -160,12 +177,8 @@
                             />
                         </div>
                         <div class="space-y-1">
-                            <p class="text-xs font-semibold tracking-wide text-slate-100">
-                                Safraeel · Notion → Website
-                            </p>
-                            <p class="text-[11px] text-slate-400">
-                                Turning messy docs into premium, bookable sites.
-                            </p>
+                            <p class="text-sm font-semibold tracking-wide text-slate-100">Safraeel · Product‑Forward Designer</p>
+                            <p class="text-[12px] text-slate-400">Designs & builds premium websites & web apps — fast, conversion‑focused, production‑ready.</p>
                         </div>
                     </div>
 
@@ -198,95 +211,144 @@
                 </div>
             </section>
 
-            <!-- Case Study -->
-            <section id="case-study" class="space-y-8">
+            <!-- Projects (unified grid) -->
+            <section id="projects" class="space-y-6">
                 <header class="space-y-2">
-                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
-                        Case study
-                    </p>
-                    <h2 class="max-w-xl text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                        From ugly Notion link → $40k/month business
-                    </h2>
-                    <p class="max-w-xl text-sm text-slate-300">
-                        Your content stays in Notion. I turn it into a premium site
-                        that looks like a real product, loads fast, and is easy to
-                        update.
-                    </p>
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">Projects</p>
+                    <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">Selected work</h2>
+                    <p class="max-w-2xl text-sm text-slate-300">Filter and open project previews. Click a card to view details and the live site.</p>
                 </header>
 
-                <div class="grid gap-8 lg:grid-cols-2">
-                    <!-- Before: Focus site raw Notion page screenshot -->
-                    <div class="space-y-4">
-                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
-                            Before: default notion.site link
-                        </p>
-                        <div
-                            class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl"
-                        >
-                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-400">
-                                <span class="font-medium">notion.site</span>
-                                <span class="rounded-full bg-amber-500/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-amber-300">
-                                    Before
-                                </span>
-                            </div>
-                            <div class="border-t border-white/5 bg-slate-950/80">
-                                <img
-                                    src="images/focus-before.jpg"
-                                    alt="Before – Focus course hosted on a generic Notion page"
-                                    class="aspect-[4/3] w-full object-cover object-top"
-                                    loading="lazy"
-                                />
+                <div class="filter-bar mt-2">
+                    <button data-filter="all" class="rounded-full px-3 py-1 text-xs bg-slate-800 text-slate-200 ring-2 ring-white/10">All</button>
+                    <button data-filter="case" class="rounded-full px-3 py-1 text-xs bg-slate-800 text-slate-200">Case study</button>
+                    <button data-filter="app" class="rounded-full px-3 py-1 text-xs bg-slate-800 text-slate-200">App / UI</button>
+                    <button data-filter="landing" class="rounded-full px-3 py-1 text-xs bg-slate-800 text-slate-200">Landing</button>
+                </div>
+
+                <div class="projects-grid mt-4">
+                    <!-- Focus (case study) -->
+                    <div data-project="case" data-open-project data-title="Focus — Course site" data-desc="Branded conversion-focused site built from Notion content." data-link="https://safraeel-focus.netlify.app" class="project-card group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl">
+                        <img src="images/focus-after.jpg" alt="Focus project" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="p-4 project-meta text-slate-100">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Focus — Course site</div>
+                                <div class="text-xs text-slate-300">Case study</div>
                             </div>
                         </div>
                     </div>
 
-                    <!-- After -->
-                    <div class="space-y-4">
-                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
-                            After: branded, conversion-focused site
-                        </p>
-                        <div
-                            class="overflow-hidden rounded-2xl border border-violet-400/40 bg-slate-900/80 shadow-soft-xl shadow-violet-500/40"
-                        >
-                            <div class="flex items-center justify-between px-4 py-2 text-[10px] text-slate-300">
-                                <span class="font-medium">safraeel-focus.netlify.app</span>
-                                <span class="rounded-full bg-emerald-400/15 px-2 py-0.5 text-[9px] uppercase tracking-wide text-emerald-300">
-                                    After
-                                </span>
+                    <!-- Spotify (app) -->
+                    <div data-project="app" data-open-project data-title="Spotify Clone" data-desc="Pixel-perfect music streaming UI built with vanilla JS." data-link="https://safraeel-spotify.netlify.app/" class="project-card group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl">
+                        <img src="images/spotify-after.jpg" alt="Spotify clone" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="p-4 project-meta text-slate-100">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Spotify Clone</div>
+                                <div class="text-xs text-slate-300">App / UI</div>
                             </div>
-                            <a
-                                href="https://safraeel-focus.netlify.app"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="block border-t border-white/5 bg-slate-950/80"
-                            >
-                                <img
-                                    src="images/focus-after.jpg"
-                                    alt="After – Focus course redesigned as a premium marketing site"
-                                    class="aspect-[4/3] w-full object-cover object-top"
-                                    loading="lazy"
-                                />
-                            </a>
                         </div>
+                    </div>
 
-                        <p class="text-sm font-medium text-slate-100">
-                            Client got
-                            <span class="font-semibold text-emerald-300">47 new signups</span>
-                            in first 14 days.
-                        </p>
+                    <!-- AI SaaS (landing) -->
+                    <div data-project="landing" data-open-project data-title="AI SaaS Landing" data-desc="Marketing landing page for an AI SaaS product." data-link="https://bilisatu.github.io/ai-saas-landingpage/" class="project-card group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl">
+                        <img src="images/ai-saas.jpg" alt="AI SaaS" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="p-4 project-meta text-slate-100">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">AI SaaS</div>
+                                <div class="text-xs text-slate-300">Landing</div>
+                            </div>
+                        </div>
+                    </div>
 
-                        <a
-                            href="https://safraeel-focus.netlify.app"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="inline-flex w-full items-center justify-center gap-1 rounded-full bg-white px-4 py-2.5 text-sm font-semibold text-slate-950 shadow-lg shadow-slate-900/70 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:bg-slate-100 sm:w-auto"
-                        >
-                            See live site
-                            <span aria-hidden="true">↗</span>
-                        </a>
+                    <!-- Equalizer (app) -->
+                    <div data-project="app" data-open-project data-title="Equalizer" data-desc="Interactive music equalizer UI." data-link="https://bilisatu.github.io/Music-Equalizer/" class="project-card group cursor-pointer overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl">
+                        <img src="images/equalizer.jpg" alt="Equalizer" class="w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                        <div class="p-4 project-meta text-slate-100">
+                            <div class="flex items-center justify-between">
+                                <div class="font-semibold">Equalizer</div>
+                                <div class="text-xs text-slate-300">App / UI</div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </section>
+
+                <!-- Modal -->
+                <div id="project-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+                    <div class="modal-content" role="document" tabindex="-1">
+                        <div class="modal-body">
+                            <img src="" alt="Project preview" />
+                        </div>
+                        <div class="p-4 bg-slate-900/90">
+                            <div class="flex items-start justify-between gap-4">
+                                <div>
+                                    <div class="modal-title text-lg font-semibold text-white"></div>
+                                    <div class="modal-desc text-sm text-slate-300 mt-1"></div>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <a class="modal-cta inline-flex items-center rounded-full bg-gradient-to-tr from-brand.purple to-indigo-400 px-4 py-2 text-sm font-semibold text-white" href="#" target="_blank" rel="noopener noreferrer">Open live</a>
+                                    <button id="modal-close" data-modal-close class="inline-flex items-center rounded-full bg-white/5 px-3 py-2 text-sm text-slate-200">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking modal: accessible, starts with compact quick-capture -->
+                <div id="booking-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-hidden="true">
+                    <div class="modal-content" role="document" tabindex="-1">
+                        <div class="p-4 bg-slate-900/95">
+                            <div class="flex items-center justify-between">
+                                <div>
+                                    <h3 class="text-lg font-semibold text-white">Get Audit</h3>
+                                    <p class="text-sm text-slate-300">Quick audit — enter your email and I will reply with 2–3 upgrade ideas.</p>
+                                </div>
+                                <button data-modal-close class="inline-flex items-center rounded-full bg-white/5 px-3 py-2 text-sm text-slate-200">Close</button>
+                            </div>
+                        </div>
+                        <div class="modal-body p-4 bg-slate-900/90">
+                            <!-- Quick capture: shown by default -->
+                            <form id="booking-quick-form" class="space-y-3">
+                                <div class="space-y-1">
+                                    <label for="booking-email" class="sr-only">Email</label>
+                                    <input id="booking-email" name="email" type="email" required placeholder="your@email.com" class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100" />
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="submit" class="inline-flex items-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-4 py-2 text-sm font-semibold text-white">Get audit</button>
+                                    <button type="button" id="booking-more" class="inline-flex items-center rounded-full bg-white/5 px-3 py-2 text-sm text-slate-200">More options</button>
+                                </div>
+                                <p id="booking-quick-status" class="text-sm text-slate-400"></p>
+                            </form>
+
+                            <!-- Full form (hidden by default) -->
+                            <form id="booking-full-form" class="space-y-3 hidden">
+                                <div class="grid gap-3 sm:grid-cols-2">
+                                    <div class="space-y-1.5">
+                                        <label for="booking-name" class="text-xs font-medium text-slate-200">Your name</label>
+                                        <input id="booking-name" name="name" type="text" class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100" placeholder="John Doe" />
+                                    </div>
+                                    <div class="space-y-1.5">
+                                        <label for="booking-email-2" class="text-xs font-medium text-slate-200">Email</label>
+                                        <input id="booking-email-2" name="email" type="email" class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100" placeholder="you@example.com" />
+                                    </div>
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label for="booking-link" class="text-xs font-medium text-slate-200">Notion / project link</label>
+                                    <input id="booking-link" name="link" type="url" class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100" placeholder="https://..." />
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label for="booking-message" class="text-xs font-medium text-slate-200">What are you trying to build?</label>
+                                    <textarea id="booking-message" name="message" rows="3" class="w-full resize-none rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100" placeholder="Describe your project..."></textarea>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <button type="submit" class="inline-flex items-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-4 py-2 text-sm font-semibold text-white">Send details</button>
+                                    <button type="button" id="booking-back" class="inline-flex items-center rounded-full bg-white/5 px-3 py-2 text-sm text-slate-200">Back</button>
+                                    <a href="#contact" id="booking-open-full" class="ml-auto text-sm text-slate-300 hover:underline">Open full page form</a>
+                                </div>
+                                <p id="booking-full-status" class="text-sm text-slate-400"></p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
 
             <section class="space-y-8">
                 <header class="space-y-2">
@@ -363,9 +425,9 @@
                             href="https://safraeel-spotify.netlify.app/"
                             target="_blank"
                             rel="noopener noreferrer"
-                            class="inline-flex w-full items-center justify-center gap-1 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-emerald-400 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110 sm:w-auto"
+                            class="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-emerald-400 px-4 py-2.5 text-sm font-semibold text-white shadow-lg shadow-emerald-500/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110"
                         >
-                            See Live Demo → https://safraeel-spotify.netlify.app/
+                            See live demo →
                         </a>
                     </div>
                 </div>
@@ -502,6 +564,49 @@
                 </div>
             </section>
 
+            <!-- Portfolio -->
+            <section id="portfolio" class="space-y-6">
+                <header class="space-y-2">
+                    <p class="text-xs font-semibold uppercase tracking-[0.25em] text-fuchsia-300/80">
+                        Portfolio
+                    </p>
+                    <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+                        Selected projects
+                    </h2>
+                    <p class="max-w-2xl text-sm text-slate-300">
+                        Recent builds — click to view live sites. Replace images and links as needed.
+                    </p>
+                </header>
+
+                <div class="grid gap-6 md:grid-cols-2">
+                    <a href="https://bilisatu.github.io/ai-saas-landingpage/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+                        <img src="images/ai-saas.jpg" alt="AI SaaS — landing page" class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 flex items-end bg-gradient-to-t from-slate-900/80 via-transparent to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-full text-slate-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm font-semibold">AI SaaS</div>
+                                    <div class="text-xs text-slate-300">Landing page</div>
+                                </div>
+                                <div class="mt-2 text-xs text-slate-300">View live →</div>
+                            </div>
+                        </div>
+                    </a>
+
+                    <a href="https://bilisatu.github.io/Music-Equalizer/" target="_blank" rel="noopener noreferrer" class="group relative overflow-hidden rounded-2xl border border-white/10 bg-slate-900/70 shadow-soft-xl transition-transform transform hover:-translate-y-1 hover:shadow-2xl">
+                        <img src="images/equalizer.jpg" alt="Equalizer — music app UI" class="aspect-[4/3] w-full object-cover transition-transform duration-500 group-hover:scale-105" loading="lazy" />
+                        <div class="absolute inset-0 flex items-end bg-gradient-to-t from-slate-900/80 via-transparent to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="w-full text-slate-100">
+                                <div class="flex items-center justify-between">
+                                    <div class="text-sm font-semibold">Equalizer</div>
+                                    <div class="text-xs text-slate-300">Music UI</div>
+                                </div>
+                                <div class="mt-2 text-xs text-slate-300">View live →</div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+
             <!-- Final CTA -->
             <section
                 id="contact"
@@ -513,82 +618,60 @@
                             Final step
                         </p>
                         <h2 class="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
-                            Ready to stop looking cheap?
+                            Ready to get 3–10× more bookings?
                         </h2>
                         <p class="text-sm text-slate-200">
-                            Send me your details. I&apos;ll review your Notion page or project and
-                            reply with 2–3 concrete upgrade ideas, free.
+                            Send your Notion or project link — I’ll reply with 2–3 quick, actionable improvements, free.
                         </p>
                     </div>
 
                     <div class="flex-1 space-y-4">
-                        <!-- Simple fake contact form -->
-                        <form id="contact-form" class="space-y-3">
-                            <div class="grid gap-3 sm:grid-cols-2">
+                        <!-- Compact fallback contact form -->
+                        <form id="contact-form" class="space-y-3 form-compact">
+                            <div class="form-row grid gap-3 sm:grid-cols-2">
                                 <div class="space-y-1.5">
-                                    <label for="contact-name" class="text-xs font-medium text-slate-200">Your name</label>
-                                    <input
-                                        id="contact-name"
-                                        name="name"
-                                        type="text"
-                                        autocomplete="name"
-                                        class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
-                                        placeholder="John Doe"
-                                    />
-                                </div>
-                                <div class="space-y-1.5">
-                                    <label for="contact-email" class="text-xs font-medium text-slate-200">Email</label>
+                                    <label for="contact-email" class="sr-only">Email</label>
                                     <input
                                         id="contact-email"
                                         name="email"
                                         type="email"
                                         autocomplete="email"
-                                        class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
+                                        required
                                         placeholder="you@example.com"
+                                        class="form-input"
+                                    />
+                                </div>
+                                <div class="space-y-1.5">
+                                    <label for="contact-link" class="sr-only">Notion or project link</label>
+                                    <input
+                                        id="contact-link"
+                                        name="link"
+                                        type="url"
+                                        placeholder="https://your-notion-or-site..."
+                                        class="form-input"
                                     />
                                 </div>
                             </div>
-                            <div class="space-y-1.5">
-                                <label for="contact-link" class="text-xs font-medium text-slate-200">Notion / project link</label>
-                                <input
-                                    id="contact-link"
-                                    name="link"
-                                    type="url"
-                                    class="w-full rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
-                                    placeholder="https://www.notion.so/your-page..."
-                                />
+                            <div class="flex items-center gap-3">
+                                <button
+                                    type="submit"
+                                    class="submit-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl ring-1 ring-white/10 sm:w-auto"
+                                >
+                                    Get Audit
+                                </button>
+                                <div class="flex gap-2">
+                                    <a href="https://wa.me/251901337491?text=Hi%20Safraeel%2C%20I%27d%20like%20a%20free%2015-min%20audit.%20My%20Notion%20or%20project%3A%20" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-300 hover:bg-emerald-500/15">WhatsApp</a>
+                                    <a href="https://t.me/TuJiZ" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-3 py-2 text-sm font-medium text-sky-300 hover:bg-sky-500/15">Telegram</a>
+                                </div>
                             </div>
-                            <div class="space-y-1.5">
-                                <label for="contact-message" class="text-xs font-medium text-slate-200">What are you trying to build?</label>
-                                <textarea
-                                    id="contact-message"
-                                    name="message"
-                                    rows="3"
-                                    class="w-full resize-none rounded-xl border border-white/10 bg-slate-900/70 px-3 py-2 text-sm text-slate-100 placeholder:text-slate-500 shadow-sm outline-none ring-0 focus:border-brand.purple focus:ring-1 focus:ring-brand.purple"
-                                    placeholder="Example: I have a Notion course page and want it to look like a real product site."
-                                ></textarea>
-                            </div>
-                            <button
-                                type="submit"
-                                class="group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-center text-sm font-semibold text-white shadow-soft-xl shadow-fuchsia-500/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110 sm:w-auto"
-                            >
-                                Send details (fake demo)
-                                <span
-                                    aria-hidden="true"
-                                    class="text-base transition-transform group-hover:translate-x-0.5"
-                                >↗</span>
-                            </button>
-                            <p id="contact-form-status" class="text-[11px] text-slate-400"></p>
+                            <p id="contact-form-status" class="text-[11px] text-slate-400">I&apos;ll reply with 2–3 upgrade ideas — usually within 24h.</p>
                         </form>
 
-                        <div class="space-y-1.5 text-[11px] text-slate-400">
+                        <div class="text-[11px] text-slate-400">
                             <p>
                                 Prefer chat? Reach out directly:
                                 <span class="font-medium text-slate-200">WhatsApp +251 901 337 491</span>
                                 • <span class="font-medium text-slate-200">Telegram @TujiZ</span>
-                            </p>
-                            <p class="text-slate-500">
-                                This form is a simple demo for now. I&apos;ll reply manually on WhatsApp or email.
                             </p>
                         </div>
                     </div>
