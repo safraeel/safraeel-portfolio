@@ -13,6 +13,11 @@
         <script src="https://cdn.tailwindcss.com"></script>
 
         <link rel="stylesheet" href="style.css" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <link rel="icon" type="image/png" href="favicon-32.png" sizes="32x32" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+        <meta name="theme-color" content="#8b5cf6" />
     </head>
 
     <body class="grain-overlay bg-grainy-gradient text-slate-100 antialiased">
@@ -26,20 +31,7 @@
         <header class="sticky top-0 z-30 border-b border-white/5 bg-slate-950/75 backdrop-blur-xl">
             <div class="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6 lg:px-8">
                 <a href="#top" class="site-logo flex items-center gap-2 transition hover:opacity-90" aria-label="Safraeel Studio home">
-                    <svg width="32" height="32" viewBox="0 0 32 32" role="img" aria-labelledby="logoTitle" xmlns="http://www.w3.org/2000/svg" class="rounded-full">
-                        <title id="logoTitle">Safraeel Studio logo</title>
-                        <defs>
-                            <linearGradient id="g1" x1="0" x2="1" y1="0" y2="1">
-                                <stop offset="0%" stop-color="#a855f7" />
-                                <stop offset="100%" stop-color="#6366f1" />
-                            </linearGradient>
-                            <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
-                                <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000" flood-opacity="0.35" />
-                            </filter>
-                        </defs>
-                        <rect width="32" height="32" rx="8" fill="url(#g1)" filter="url(#logoShadow)" />
-                        <text x="50%" y="52%" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="14" font-weight="800" fill="white">S</text>
-                    </svg>
+                    <img src="images/S-letter.svg" alt="Safraeel Studio logo" width="32" height="32" class="h-8 w-8 rounded-full object-cover" />
                     <span class="text-xs font-semibold uppercase tracking-[0.24em] text-slate-200">Safraeel Studio</span>
                 </a>
                 <nav class="hidden items-center gap-8 text-[11px] font-medium text-slate-300 sm:flex">
@@ -652,7 +644,7 @@
                                     />
                                 </div>
                             </div>
-                            <div class="flex items-center gap-3">
+                            <div class="form-actions flex items-center gap-3">
                                 <button
                                     type="submit"
                                     class="submit-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl ring-1 ring-white/10 sm:w-auto"
