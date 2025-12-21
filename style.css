@@ -265,6 +265,22 @@ header.scrolled {
 .mobile-open #mobile-menu { transform: translateY(0); opacity: 1; }
 #mobile-menu.hidden { transform: translateY(-8px); opacity: 0; }
 
+/* Ensure mobile menu becomes a full-screen overlay when opened on small devices */
+body.mobile-open #mobile-menu {
+  display: block !important;
+  position: fixed;
+  inset: 0 0 0 0;
+  z-index: 50;
+  padding: 1rem 1rem 2rem;
+  background: transparent;
+}
+body.mobile-open #mobile-menu nav {
+  max-width: 420px;
+  margin: 6rem auto 0; /* push below header */
+}
+/* ensure the inner panel is scrollable on small screens */
+body.mobile-open #mobile-menu nav { overflow: auto; max-height: calc(100vh - 6rem); }
+
 /* Hide logo text on small screens to save space */
 @media (max-width: 640px) {
   .site-logo span { display: none; }
@@ -290,6 +306,15 @@ header.scrolled {
 .form-compact { gap: 0.5rem; }
 .form-compact .form-row { display: flex; gap:0.5rem; }
 .form-compact label.sr-only { position: absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
+
+/* Make the submit + quick-links stack cleanly on small screens to avoid overflow */
+.form-actions { display: flex; align-items: center; gap: 0.75rem; }
+@media (max-width: 640px) {
+  .form-actions { flex-direction: column; align-items: stretch; }
+  .form-actions .submit-cta { width: 100%; }
+  .form-actions .flex { width: 100%; justify-content: flex-start; gap: 0.5rem; }
+  .form-actions .flex a { flex: 0 0 auto; }
+}
 
 /* Smaller submit micro-interaction */
 .submit-cta { transition: transform 180ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease; }
