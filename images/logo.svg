@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="logoTitle">
   <title id="logoTitle">Safraeel Studio logo</title>
   <defs>
@@ -19,4 +20,27 @@
 
   <!-- Letter S -->
   <text x="26" y="36" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#ffffff">S</text>
+=======
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-labelledby="logoTitle">
+  <title id="logoTitle">Safraeel Studio logo</title>
+  <defs>
+    <linearGradient id="logoGrad" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#a855f7" />
+      <stop offset="60%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="logoShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feDropShadow dx="0" dy="6" stdDeviation="6" flood-color="#000" flood-opacity="0.35" />
+    </filter>
+  </defs>
+
+  <!-- Rectangular base -->
+  <rect x="6" y="8" width="40" height="48" rx="8" fill="url(#logoGrad)" filter="url(#logoShadow)" />
+
+  <!-- Triangle accent (attached to the right side) -->
+  <polygon points="46,8 62,16 46,24" fill="#ffffff" opacity="0.12" />
+
+  <!-- Letter S -->
+  <text x="26" y="36" text-anchor="middle" dominant-baseline="middle" font-family="Inter, Arial, Helvetica, sans-serif" font-size="20" font-weight="800" fill="#ffffff">S</text>
+>>>>>>> 6ef4b80a122ab5fd3f6eba8d869138929c1e9dba
 </svg>
