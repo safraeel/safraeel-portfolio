@@ -362,18 +362,24 @@ body.mobile-open #mobile-menu nav { overflow: auto; max-height: calc(100vh - 6re
   transform: translateY(-1px);
 }
 
-.form-compact { gap: 0.5rem; }
-.form-compact .form-row { display: flex; gap:0.5rem; }
+.form-compact { gap: 0.75rem; }
+.form-compact .form-row { display: grid; gap: 0.75rem; grid-auto-flow: row; }
+@media (min-width: 640px) {
+  .form-compact .form-row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 .form-compact label.sr-only { position: absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0; }
 
 /* Make the submit + quick-links stack cleanly on small screens to avoid overflow */
 .form-actions { display: flex; align-items: center; gap: 0.75rem; }
 @media (max-width: 640px) {
-  .form-actions { flex-direction: column; align-items: stretch; }
+  .form-actions { flex-direction: column; align-items: stretch; gap: 0.75rem; }
   .form-actions .submit-cta { width: 100%; }
   .form-actions .flex { width: 100%; justify-content: flex-start; gap: 0.5rem; }
   .form-actions .flex a { flex: 0 0 auto; }
 }
+
+/* Ensure inputs don't overflow their grid cells on small screens */
+.form-input { min-width: 0; }
 
 /* Smaller submit micro-interaction */
 .submit-cta { transition: transform 180ms cubic-bezier(.2,.8,.2,1), box-shadow 160ms ease; }
