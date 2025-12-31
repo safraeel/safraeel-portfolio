@@ -354,8 +354,8 @@ body.mobile-open #mobile-menu nav {
 /* ensure the inner panel is scrollable on small screens */
 body.mobile-open #mobile-menu nav { overflow: auto; max-height: calc(100vh - 6rem); }
 
-/* Hide logo text on small screens to save space */
-@media (max-width: 640px) {
+/* Hide logo text on very small screens to save space */
+@media (max-width: 420px) {
   .site-logo span { display: none; }
 }
 
