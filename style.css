@@ -359,6 +359,16 @@ body.mobile-open #mobile-menu nav { overflow: auto; max-height: calc(100vh - 6re
   .site-logo span { display: none; }
 }
 
+/* Mobile menu toggle morph (hamburger -> X) when menu is open */
+#mobile-menu-toggle { position: relative; width: 36px; height: 28px; }
+#mobile-menu-toggle span { display: block; transition: transform 200ms ease, opacity 200ms ease; transform-origin: center; }
+body.mobile-open #mobile-menu-toggle span:first-child { transform: translateY(6px) rotate(45deg); width: 20px; }
+body.mobile-open #mobile-menu-toggle span:last-child { transform: translateY(-6px) rotate(-45deg); width: 20px; }
+#mobile-menu-toggle span + span { margin-top: 6px; }
+
+/* Slightly dim the menu toggle background when menu open */
+body.mobile-open #mobile-menu-toggle { background: rgba(255,255,255,0.03); }
+
 /* Compact form inputs */
 .form-input {
   background: rgba(15, 23, 42, 0.6);
