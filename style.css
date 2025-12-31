@@ -442,3 +442,17 @@ body.dark-mode .description {
 @media (max-width: 520px) {
   .nav-cta.sticky { display: none !important; }
 }
+
+/* Ensure the header logo image sits correctly inline */
+.site-logo img { display: block; }
+
+/* Pricing cards entrance animation */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.price-card { animation: fadeInUp 0.6s cubic-bezier(.2,.9,.2,1) both; }
+.price-card:nth-of-type(1) { animation-delay: 0s; }
+.price-card:nth-of-type(2) { animation-delay: 0.12s; }
+.price-card:nth-of-type(3) { animation-delay: 0.24s; }
+
