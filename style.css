@@ -235,11 +235,25 @@ body:not(.dark-mode) .footer-bottom p {
   100% { box-shadow: 0 0 0 0 rgba(168,85,247,0); }
 }
 .cta-animate {
-  animation: pulse-glow 4s ease-in-out infinite;
+  /* entrance */
+  animation: ctaEnter 560ms cubic-bezier(.2,.9,.2,1) both, pulse-glow 4s ease-in-out 800ms infinite;
   transition: transform 160ms ease, box-shadow 160ms ease;
+  /* slightly larger touch target */
+  padding-left: 1.25rem !important;
+  padding-right: 1.25rem !important;
+  padding-top: 0.75rem !important;
+  padding-bottom: 0.75rem !important;
+  font-size: 0.95rem;
+  background-image: linear-gradient(90deg, #a855f7 0%, #ec4899 50%, #6366f1 100%);
 }
 .cta-animate:hover {
-  transform: translateY(-3px) scale(1.02);
+  transform: translateY(-4px) scale(1.03);
+  box-shadow: 0 18px 50px rgba(168,85,247,0.18);
+}
+
+@keyframes ctaEnter {
+  from { opacity: 0; transform: translateY(10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
 .trust-row { display:flex; gap:0.75rem; align-items:center; margin-top:0.5rem; flex-wrap:wrap }
