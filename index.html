@@ -46,7 +46,7 @@
                     <a
                         id="nav-cta"
                         href="#contact"
-                        class="nav-cta hidden rounded-full px-4 py-2 text-[11px] font-semibold text-slate-50 shadow-sm ring-1 ring-white/10 backdrop-blur sm:inline-flex hover:translate-y-0.5 hover:shadow-md"
+                        class="nav-cta hidden rounded-full px-4 py-2 text-[11px] font-semibold text-slate-50 shadow-sm ring-1 ring-white/10 backdrop-blur sm:inline-flex hover:translate-y-0.5 hover:shadow-md whitespace-nowrap"
                         >Get Audit</a
                     >
                     <!-- Mobile menu button -->
@@ -104,8 +104,12 @@
                         </p>
                     </div>
 
-                    <p class="text-xs font-medium uppercase tracking-[0.25em] text-slate-400">
-                        50+ live sites • Average client gets 3–10x more bookings • From $150
+                    <p class="text-xs font-medium uppercase tracking-[0.25em] text-slate-400 flex items-center gap-3">
+                        <span>50+ live sites</span>
+                        <span class="text-slate-500">•</span>
+                        <span>Average client gets 3–10x more bookings</span>
+                        <span class="text-slate-500">•</span>
+                        <span>From $150</span>
                     </p>
                     <p class="mt-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-slate-900/60 px-3 py-1 text-[11px] font-medium text-slate-200">
                         <span class="h-1.5 w-1.5 rounded-full bg-purple-400"></span>
@@ -118,10 +122,10 @@
                     <div class="flex flex-col gap-3 sm:flex-row sm:items-center">
                         <a
                                 href="#contact"
-                                class="cta-animate inline-flex items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl shadow-brand.purple/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110"
+                                class="cta-animate inline-flex items-center justify-center rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl shadow-brand.purple/40 ring-1 ring-white/10 transition hover:translate-y-0.5 hover:brightness-110 whitespace-nowrap"
                             >
                                 Get Audit
-                                <span aria-hidden="true" class="ml-1">→</span>
+                                <span aria-hidden="true" class="ml-2 translate-y-0.5">→</span>
                             </a>
                         <a
                             href="https://safraeel-focus.netlify.app"
@@ -357,8 +361,12 @@
 
                 <div class="grid gap-8 lg:grid-cols-2">
                     <div class="space-y-4">
-                        <p class="text-xs font-medium uppercase tracking-[0.22em] text-slate-400">
-                            Before: first Spotify UI version
+                        <p class="text-xs font-medium uppercase tracking-[0.25em] text-slate-400 flex items-center gap-3">
+                            <span>50+ live sites</span>
+                            <span class="text-slate-500">•</span>
+                            <span>Average client gets 3–10x more bookings</span>
+                            <span class="text-slate-500">•</span>
+                            <span>From $150</span>
                         </p>
                         <div
                             class="overflow-hidden rounded-2xl border border-white/10 bg-slate-900/80 shadow-soft-xl"
@@ -461,7 +469,7 @@
                 <div class="grid gap-6 md:grid-cols-3">
                     <!-- Starter -->
                     <article
-                        class="flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
+                        class="price-card flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
                     >
                         <div class="space-y-4">
                             <h3 class="text-sm font-semibold text-white">Starter</h3>
@@ -481,7 +489,7 @@
 
                     <!-- Pro (Most Popular) -->
                     <article
-                        class="relative flex flex-col justify-between rounded-2xl border border-rose-500/60 bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950/95 p-5 shadow-soft-xl shadow-rose-500/40"
+                        class="price-card relative flex flex-col justify-between rounded-2xl border border-rose-500/60 bg-gradient-to-b from-slate-900/90 via-slate-950 to-slate-950/95 p-5 shadow-soft-xl shadow-rose-500/40"
                     >
                         <div class="absolute -top-3 right-4">
                             <span
@@ -513,7 +521,7 @@
 
                     <!-- Agency -->
                     <article
-                        class="flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
+                        class="price-card flex flex-col justify-between rounded-2xl border border-white/8 bg-slate-950/70 p-5 shadow-md shadow-black/40"
                     >
                         <div class="space-y-4">
                             <h3 class="text-sm font-semibold text-white">Agency / Studio</h3>
@@ -645,12 +653,13 @@
                                 </div>
                             </div>
                             <div class="form-actions flex items-center gap-3">
-                                <button
-                                    type="submit"
-                                    class="submit-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl ring-1 ring-white/10 sm:w-auto"
-                                >
-                                    Get Audit
-                                </button>
+                                        <button
+                                            type="submit"
+                                            class="submit-cta inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-tr from-brand.purple via-fuchsia-500 to-indigo-400 px-6 py-3 text-sm font-semibold text-white shadow-soft-xl ring-1 ring-white/10 sm:w-auto whitespace-nowrap"
+                                        >
+                                            Get Audit
+                                            <span aria-hidden="true" class="ml-2">→</span>
+                                        </button>
                                 <div class="flex gap-2">
                                     <a href="https://wa.me/251901337491?text=Hi%20Safraeel%2C%20I%27d%20like%20a%20free%2015-min%20audit.%20My%20Notion%20or%20project%3A%20" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-emerald-500/10 px-3 py-2 text-sm font-medium text-emerald-300 hover:bg-emerald-500/15">WhatsApp</a>
                                     <a href="https://t.me/TuJiZ" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 rounded-full bg-sky-500/10 px-3 py-2 text-sm font-medium text-sky-300 hover:bg-sky-500/15">Telegram</a>
