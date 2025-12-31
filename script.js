@@ -1,11 +1,28 @@
 document.addEventListener('click', function (event) {
+  // helpers to keep mobile menu state consistent
+  function closeMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const toggleEl = document.getElementById('mobile-menu-toggle');
+    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
+    document.body.classList.remove('mobile-open');
+    if (toggleEl) toggleEl.setAttribute('aria-expanded','false');
+    if (toggleEl) try { toggleEl.focus(); } catch(e){}
+  }
+  function openMobileMenu() {
+    const menu = document.getElementById('mobile-menu');
+    const toggleEl = document.getElementById('mobile-menu-toggle');
+    if (menu) menu.classList.remove('hidden');
+    document.body.classList.add('mobile-open');
+    if (toggleEl) toggleEl.setAttribute('aria-expanded','true');
+  }
+
   const toggle = event.target.closest('#mobile-menu-toggle');
   if (toggle) {
     const menu = document.getElementById('mobile-menu');
-    if (menu) {
-      menu.classList.toggle('hidden');
-      document.body.classList.toggle('mobile-open');
-    }
+    if (!menu) return;
+    // if menu currently open, close it, otherwise open
+    if (!menu.classList.contains('hidden')) closeMobileMenu();
+    else openMobileMenu();
     return;
   }
 
@@ -13,12 +30,8 @@ document.addEventListener('click', function (event) {
   const closeBtn = event.target.closest('#mobile-menu-close');
   const backdropClick = event.target.closest('.mobile-backdrop');
   if (closeBtn || backdropClick) {
-    const menu = document.getElementById('mobile-menu');
-    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
-    document.body.classList.remove('mobile-open');
-    // move focus back to toggle for accessibility
-    const toggleEl = document.getElementById('mobile-menu-toggle');
-    if (toggleEl) toggleEl.focus();
+    // use helper to keep everything in sync
+    closeMobileMenu();
     return;
   }
 
@@ -36,9 +49,12 @@ document.addEventListener('click', function (event) {
   const elementPosition = target.getBoundingClientRect().top + window.scrollY;
   const offsetPosition = elementPosition - headerOffset;
 
-  const menu = document.getElementById('mobile-menu');
-  if (menu && !menu.classList.contains('hidden')) {
-    menu.classList.add('hidden');
+  // ensure mobile menu closes when navigating to an anchor
+  try { if (typeof closeMobileMenu === 'function') closeMobileMenu(); } catch(e) {
+    const menu = document.getElementById('mobile-menu');
+    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
+    document.body.classList.remove('mobile-open');
+    const toggleEl = document.getElementById('mobile-menu-toggle'); if (toggleEl) toggleEl.setAttribute('aria-expanded','false');
   }
 
   window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
