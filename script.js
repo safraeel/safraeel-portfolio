@@ -9,6 +9,19 @@ document.addEventListener('click', function (event) {
     return;
   }
 
+  // Close mobile menu when clicking the backdrop or the new close button
+  const closeBtn = event.target.closest('#mobile-menu-close');
+  const backdropClick = event.target.closest('.mobile-backdrop');
+  if (closeBtn || backdropClick) {
+    const menu = document.getElementById('mobile-menu');
+    if (menu && !menu.classList.contains('hidden')) menu.classList.add('hidden');
+    document.body.classList.remove('mobile-open');
+    // move focus back to toggle for accessibility
+    const toggleEl = document.getElementById('mobile-menu-toggle');
+    if (toggleEl) toggleEl.focus();
+    return;
+  }
+
   const link = event.target.closest('a[href^="#"]');
   if (!link) return;
   const targetId = link.getAttribute('href').slice(1);
