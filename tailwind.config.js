@@ -1,41 +1,31 @@
-<<<<<<< HEAD
 tailwind.config = {
+  darkMode: 'class',
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        display: ['"Space Grotesk"', 'sans-serif'],
+      },
       colors: {
         brand: {
-          purple: '#a855f7',
-          purpleSoft: '#8b5cf6',
+          accent: '#8b5cf6', // Indigo/Violet
+          accentHover: '#7c3aed',
+        }
+      },
+      animation: {
+        'fade-in': 'fadeIn 0.6s ease-out forwards',
+        'slide-up': 'slideUp 0.6s ease-out forwards',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
-      },
-      boxShadow: {
-        'soft-xl': '0 40px 120px rgba(0, 0, 0, 0.55)',
-      },
-      backgroundImage: {
-        'grainy-gradient':
-          'radial-gradient(circle at top, rgba(168,85,247,0.32), transparent 55%), radial-gradient(circle at bottom, rgba(56,189,248,0.3), transparent 55%), linear-gradient(135deg, #020617, #020617)',
-      },
-    },
-  },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        }
+      }
+    }
+  }
 };
-=======
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        brand: {
-          purple: '#a855f7',
-          purpleSoft: '#8b5cf6',
-        },
-      },
-      boxShadow: {
-        'soft-xl': '0 40px 120px rgba(0, 0, 0, 0.55)',
-      },
-      backgroundImage: {
-        'grainy-gradient':
-          'radial-gradient(circle at top, rgba(168,85,247,0.32), transparent 55%), radial-gradient(circle at bottom, rgba(56,189,248,0.3), transparent 55%), linear-gradient(135deg, #020617, #020617)',
-      },
-    },
-  },
-};
->>>>>>> 6ef4b80a122ab5fd3f6eba8d869138929c1e9dba
