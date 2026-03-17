@@ -34,7 +34,7 @@
             <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
                 <a href="#work" class="hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">Work</a>
                 <a href="#about" class="hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">About</a>
-                <a href="#contact" class="modal-open-btn px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)] cursor-none" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</a>
+                <a href="#contact" class="modal-open-btn px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)]" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</a>
             </div>
 
             <!-- Mobile Nav Toggle -->
@@ -48,9 +48,9 @@
         <!-- Mobile Menu content -->
         <div id="mobile-menu" class="hidden md:hidden glass border-t border-zinc-800">
             <div class="flex flex-col p-6 space-y-4 text-center">
-                <a href="#work" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">Work</a>
-                <a href="#about" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">About</a>
-                <button class="modal-open-btn px-5 py-3 rounded-full bg-brand-accent text-white font-medium mx-auto w-2/3 mobile-link cursor-none" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</button>
+                <a href="#work" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link" onmouseenter="UI_Audio && UI_Audio.playTick()">Work</a>
+                <a href="#about" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link" onmouseenter="UI_Audio && UI_Audio.playTick()">About</a>
+                <button class="modal-open-btn px-5 py-3 rounded-full bg-brand-accent text-white font-medium mx-auto w-2/3 mobile-link" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</button>
             </div>
         </div>
     </nav>
@@ -76,10 +76,10 @@
                     I engineer premium digital experiences. Bridging the gap between world-class design and robust, high-performance web architecture.
                 </p>
                 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <button class="modal-open-btn px-8 py-4 w-full sm:w-auto rounded-full bg-zinc-100 text-zinc-950 font-semibold hover:bg-white hover:scale-105 transition-transform cursor-none" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                    <button class="modal-open-btn px-8 py-4 w-full sm:w-auto rounded-full bg-zinc-100 text-zinc-950 font-semibold hover:bg-white hover:scale-105 transition-transform" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">
                         Start a Project
                     </button>
-                    <a href="#work" class="px-8 py-4 w-full sm:w-auto rounded-full ring-1 ring-zinc-800 bg-zinc-900/50 text-zinc-300 font-medium hover:bg-zinc-800 hover:text-white transition-all backdrop-blur-sm text-center cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                    <a href="#work" class="px-8 py-4 w-full sm:w-auto rounded-full ring-1 ring-zinc-800 bg-zinc-900/50 text-zinc-300 font-medium hover:bg-zinc-800 hover:text-white transition-all backdrop-blur-sm text-center" onmouseenter="UI_Audio && UI_Audio.playTick()">
                         View Work
                     </a>
                 </div>
@@ -97,9 +97,9 @@
                     
                     <!-- Filters -->
                     <div class="flex flex-wrap gap-2" id="filter-container">
-                        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-zinc-100 text-zinc-950 transition-colors cursor-none" data-filter="all" onmouseenter="UI_Audio && UI_Audio.playTick()">All</button>
-                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800 cursor-none" data-filter="saas" onmouseenter="UI_Audio && UI_Audio.playTick()">SaaS</button>
-                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800 cursor-none" data-filter="marketing" onmouseenter="UI_Audio && UI_Audio.playTick()">Marketing</button>
+                        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-zinc-100 text-zinc-950 transition-colors" data-filter="all" onmouseenter="UI_Audio && UI_Audio.playTick()">All</button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800" data-filter="saas" onmouseenter="UI_Audio && UI_Audio.playTick()">SaaS</button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800" data-filter="marketing" onmouseenter="UI_Audio && UI_Audio.playTick()">Marketing</button>
                     </div>
                 </div>
 
@@ -232,19 +232,19 @@
     <footer class="border-t border-zinc-900 bg-zinc-950 py-12 px-6 relative">
         <!-- Floating CMD+K Hint -->
         <div class="hidden md:flex justify-center mb-8">
-             <button id="cmdk-hint" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors text-xs font-mono tracking-widest backdrop-blur-sm cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">
+             <button id="cmdk-hint" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors text-xs font-mono tracking-widest backdrop-blur-sm" onmouseenter="UI_Audio && UI_Audio.playTick()">
                  PRESS <span class="bg-zinc-800 px-1.5 py-0.5 rounded text-white inline-block">⌘</span> + <span class="bg-zinc-800 px-1.5 py-0.5 rounded text-white inline-block">K</span> TO OPEN COMMAND PALETTE
              </button>
         </div>
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <div class="text-zinc-500 text-sm flex items-center gap-2">
                 © 2026 Safraeel Studio. All rights reserved.
-                <button id="terminal-trigger" class="w-3 h-3 rounded-sm bg-zinc-800/80 hover:bg-zinc-700 transition-colors cursor-none" aria-label="Terminal Mode" onmouseenter="UI_Audio && UI_Audio.playTick()"></button>
+                <button id="terminal-trigger" class="w-3 h-3 rounded-sm bg-zinc-800/80 hover:bg-zinc-700 transition-colors" aria-label="Terminal Mode" onmouseenter="UI_Audio && UI_Audio.playTick()"></button>
             </div>
             <div class="flex items-center gap-6">
-                <a href="https://twitter.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">Twitter</a>
-                <a href="https://github.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">GitHub</a>
-                <a href="https://linkedin.com/in/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">LinkedIn</a>
+                <a href="https://twitter.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">Twitter</a>
+                <a href="https://github.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">GitHub</a>
+                <a href="https://linkedin.com/in/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">LinkedIn</a>
             </div>
         </div>
     </footer>
@@ -335,7 +335,7 @@
             <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
                 <div class="modal-panel relative transform overflow-hidden rounded-3xl glass text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-zinc-800 opacity-0 scale-95">
                     
-                    <button type="button" class="modal-close-btn absolute right-6 top-6 text-zinc-400 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 rounded-full p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                    <button type="button" class="modal-close-btn absolute right-6 top-6 text-zinc-400 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 rounded-full p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent" onmouseenter="UI_Audio && UI_Audio.playTick()">
                         <span class="sr-only">Close form</span>
                         <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
@@ -360,7 +360,7 @@
                                 <textarea id="details" rows="4" required class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none" placeholder="Tell me about what we are building..."></textarea>
                             </div>
                             <div class="pt-2">
-                                <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold py-3.5 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)] focus:outline-none focus:ring-2 focus:ring-white flex justify-center items-center gap-2 cursor-none" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                                <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold py-3.5 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)] focus:outline-none focus:ring-2 focus:ring-white flex justify-center items-center gap-2" onmouseenter="UI_Audio && UI_Audio.playTick()">
                                     <span id="submit-text">Send Message</span>
                                     <svg id="submit-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                                         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>

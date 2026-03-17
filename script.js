@@ -57,17 +57,23 @@ const UI_Audio = {
 
 // INITIALIZATION
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', bootApp);
+    document.addEventListener('DOMContentLoaded', initPreloader);
 } else {
-    bootApp();
+    initPreloader();
 }
 
-function bootApp() {
+function initPreloader() {
     const preloader = document.getElementById('preloader');
     const counter = document.getElementById('preloader-counter');
     const bar = document.getElementById('preloader-bar');
     const btn = document.getElementById('preloader-btn');
     const statusTxt = document.getElementById('preloader-status');
+
+    // If the page doesn't include a preloader, start the app immediately
+    if (!preloader || !btn) {
+        try { bootApp(); } catch (e) { console.warn('bootApp failed', e); }
+        return;
+    }
     
     let progress = 0;
     const interval = setInterval(() => {
@@ -85,6 +91,27 @@ function bootApp() {
             statusTxt.innerText = "SYSTEM_READY";
             btn.classList.remove('opacity-0', 'pointer-events-none');
             btn.classList.add('opacity-100', 'pointer-events-auto');
+            // Accessibility: announce ready state
+            if (statusTxt) {
+                statusTxt.setAttribute('role', 'status');
+                statusTxt.setAttribute('aria-live', 'polite');
+            }
+
+            // Auto-start the site after a short delay if user doesn't click
+            setTimeout(() => {
+                if (preloader && preloader.style.display !== 'none') {
+                    try {
+                        UI_Audio.init();
+                        UI_Audio.playWhoosh();
+                    } catch (e) { /* ignore audio errors */ }
+                    preloader.classList.add('opacity-0');
+                    document.body.classList.remove('overflow-hidden');
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        if (typeof bootApp === 'function') bootApp();
+                    }, 700);
+                }
+            }, 1200);
         }
     }, 40);
 
@@ -97,13 +124,15 @@ function bootApp() {
         
         setTimeout(() => {
             preloader.style.display = 'none';
-            bootApp();
+            // start main app after preloader
+            if (typeof bootApp === 'function') bootApp();
         }, 1000);
     });
 }
 
 function bootApp() {
     initLenis();
+    initAnchorNavigation();
     initScrollEffects();
     initMobileMenu();
     initProjectFilters();
@@ -116,23 +145,65 @@ function bootApp() {
 }
 
 function initLenis() {
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        direction: 'vertical',
-        gestureDirection: 'vertical',
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    });
-    
-    function raf(time) {
-        lenis.raf(time);
-        requestAnimationFrame(raf);
+    if (typeof Lenis === 'undefined') {
+        // Lenis CDN not available — skip smooth scroll gracefully
+        return;
     }
-    requestAnimationFrame(raf);
+
+    try {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+            infinite: false,
+        });
+
+        // expose lenis for other modules (anchor navigation)
+        try { window.__lenis = lenis; } catch (e) { /* ignore */ }
+
+        function raf(time) {
+            if (lenis && typeof lenis.raf === 'function') lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+    } catch (e) {
+        console.warn('Lenis init failed:', e);
+    }
+}
+
+function initAnchorNavigation() {
+    // Handle internal hash links and smooth-scroll using Lenis when available
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+        link.addEventListener('click', (e) => {
+            const href = link.getAttribute('href');
+            if (!href || href === '#') return;
+            const id = href.slice(1);
+            const target = document.getElementById(id);
+            if (!target) return;
+            e.preventDefault();
+            // If Lenis is running, use it for smooth scroll
+            if (window.__lenis && typeof window.__lenis.scrollTo === 'function') {
+                try {
+                    window.__lenis.scrollTo(target, { offset: 0 });
+                } catch (err) {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            } else {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+            // update focus for accessibility
+            setTimeout(() => {
+                target.setAttribute('tabindex', '-1');
+                target.focus();
+            }, 600);
+        });
+    });
 }
 function initScrollEffects() {
     const nav = document.getElementById('navbar');
@@ -454,9 +525,7 @@ function initMinimalCursor() {
     if (window.matchMedia("(pointer: fine)").matches) {
         const cursorDot = document.createElement('div');
         cursorDot.className = 'fixed top-0 left-0 w-3 h-3 bg-white rounded-full pointer-events-none mix-blend-difference transition-transform duration-150 ease-out'; cursorDot.style.zIndex = '9999';
-        const style = document.createElement('style');
-        style.innerHTML = '* { cursor: none !important; }';
-        document.head.appendChild(style);
+        // do not hide the native cursor globally — keep native pointer interactions intact
         
         document.body.appendChild(cursorDot);
 
@@ -485,6 +554,8 @@ function initMinimalCursor() {
         });
     }
 }
+
+// (header particles removed)
 
 function initCMD_K() {
     // 8. God Mode CMD+K Palette
