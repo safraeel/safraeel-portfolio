@@ -123,61 +123,105 @@
 
                 <!-- Project Grid -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
-                    <article class="project-card glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
-                        <div class="relative overflow-hidden aspect-[4/3]">
-                            <img src="images/spotify-after.jpg" alt="Spotify Clone UI" width="1200" height="900" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
-                            <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                                <div>
-                                    <p class="text-brand-accent text-sm font-medium mb-2 tracking-wide uppercase">SaaS App</p>
-                                    <h3 class="text-2xl font-display font-bold text-white">Spotify UI Clone</h3>
-                                </div>
-                                <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                                    <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
+                        <a href="https://safraeel-spotify.netlify.app" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/spotify-after.jpg" alt="Spotify Clone UI" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">SaaS App</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Spotify UI Clone</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Interactive music player UI with responsive controls and polished micro-interactions.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">CSS</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">JavaScript</span>
+                                      </div>
+                                  </div>
+                                  <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                      <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                      </svg>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
                     </article>
 
-                    <article class="project-card glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
-                        <div class="relative overflow-hidden aspect-[4/3]">
-                            <img src="images/focus-after.jpg" alt="Focus Marketing Site" width="1200" height="900" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
-                            <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                                <div>
-                                    <p class="text-emerald-400 text-sm font-medium mb-2 tracking-wide uppercase">Marketing Site</p>
-                                    <h3 class="text-2xl font-display font-bold text-white">Focus Course Platform</h3>
-                                </div>
-                            </div>
-                        </div>
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
+                        <a href="https://safraeel-focus.netlify.app" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/focus-after.jpg" alt="Focus Marketing Site" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Marketing Site</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Focus Course Platform</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Conversion-focused marketing site with modular sections and strong visual hierarchy.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Tailwind</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Forms</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
                     </article>
 
-                    <article class="project-card glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
-                        <div class="relative overflow-hidden aspect-[4/3]">
-                            <img src="images/equalizer.jpg" alt="Equalizer App" width="1200" height="900" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
-                            <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                                <div>
-                                    <p class="text-brand-accent text-sm font-medium mb-2 tracking-wide uppercase">Interactive UI</p>
-                                    <h3 class="text-2xl font-display font-bold text-white">Music Equalizer</h3>
-                                </div>
-                            </div>
-                        </div>
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
+                        <a href="https://bilisatu.github.io/Music-Equalizer/" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/equalizer.jpg" alt="Equalizer App" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Interactive UI</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Music Equalizer</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Mobile-friendly audio visualizer with real-time controls and fun UX details.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">JavaScript</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Canvas</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
                     </article>
 
-                    <article class="project-card glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
-                        <div class="relative overflow-hidden aspect-[4/3]">
-                            <img src="images/ai-saas.jpg" alt="AI SaaS Landing Page" width="1200" height="900" class="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
-                            <div class="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent opacity-80"></div>
-                            <div class="absolute bottom-6 left-6 right-6 flex items-end justify-between">
-                                <div>
-                                    <p class="text-emerald-400 text-sm font-medium mb-2 tracking-wide uppercase">Landing Page</p>
-                                    <h3 class="text-2xl font-display font-bold text-white">AI Startup Launch</h3>
-                                </div>
-                            </div>
-                        </div>
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
+                        <a href="https://launchglow.tech" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/ai-saas.jpg" alt="AI SaaS Landing Page" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Landing Page</p>
+                                      <h3 class="text-lg font-display font-bold text-white">AI Startup Launch</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Marketing-first homepage with concise messaging and conversion-focused layout.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Tailwind</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Analytics</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
                     </article>
                 </div>
             </div>
@@ -242,6 +286,62 @@
                     <div class="glass-card p-4 rounded-3xl relative z-10 border border-zinc-800 shadow-2xl">
                         <img src="images/safraeel.jpg" alt="Safraeel Headshot" width="800" height="800" class="w-full h-auto rounded-xl object-cover grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" fetchpriority="low">
                     </div>
+                    
+                    <!-- Skills -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-medium text-white mb-4">Skills & Tools</h3>
+                        <div class="skills-grid" role="list" aria-label="Skills and tools">
+                            <!-- Order: HTML, CSS, JavaScript, TypeScript, React, Tailwind, Node.js, Python -->
+                            <!-- HTML5 -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="HTML5">
+                                <img src="images/skills/html5.svg" alt="HTML5 logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">HTML5</div>
+                            </div>
+
+                            <!-- CSS3 -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="CSS3">
+                                <img src="images/skills/css3.svg" alt="CSS3 logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">CSS3</div>
+                            </div>
+
+                            <!-- JavaScript -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="JavaScript">
+                                <img src="images/skills/javascript.svg" alt="JavaScript logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">JavaScript</div>
+                            </div>
+
+                            <!-- TypeScript -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="TypeScript">
+                                <img src="images/skills/typescript.svg" alt="TypeScript logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">TypeScript</div>
+                            </div>
+
+                            <!-- React -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="React">
+                                <img src="images/skills/react.svg" alt="React logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">React</div>
+                            </div>
+
+                            <!-- Tailwind CSS -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Tailwind CSS">
+                                <img src="images/skills/tailwindcss.svg" alt="Tailwind CSS logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Tailwind CSS</div>
+                            </div>
+
+                            <!-- Node.js -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Node.js">
+                                <img src="images/skills/nodejs.svg" alt="Node.js logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Node.js</div>
+                            </div>
+
+                            <!-- Python -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Python">
+                                <img src="images/skills/python.svg" alt="Python logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Python</div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -261,8 +361,8 @@
             </div>
             <div class="flex items-center gap-6">
                 <a href="https://twitter.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">Twitter</a>
-                <a href="https://github.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">GitHub</a>
-                <a href="https://linkedin.com/in/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">LinkedIn</a>
+                <a href="https://github.com/bilisatu" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">GitHub</a>
+                <a href="https://www.linkedin.com/in/tuji-zako-abdulahi" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">LinkedIn</a>
             </div>
         </div>
     </footer>

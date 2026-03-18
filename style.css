@@ -65,15 +65,82 @@ html.lenis {
 
 /* 3D Holographic Parallax Cards */
 .project-card {
-  transform-style: preserve-3d;
-  will-change: transform;
+  /* simple, static cards: no 3D or hover motion */
+  transform: none !important;
+  will-change: auto;
 }
 .project-card > * {
-  transform-style: preserve-3d;
-  transform: translateZ(20px);
+  transform: none !important;
 }
 .project-card:hover {
-  z-index: 10;
+  z-index: auto;
 }
 
 /* (removed hero canvas / particle styles) */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: center;
+}
+@media (min-width: 768px) {
+  .skills-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.skill-card {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:0.5rem;
+  padding:1rem;
+  min-height:96px;
+  border-radius:0.75rem;
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border:1px solid rgba(255,255,255,0.03);
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+.skill-card:hover{transform:translateY(-6px) scale(1.03);box-shadow:0 6px 20px rgba(0,0,0,0.6)}
+.skill-icon{width:42px;height:42px;display:inline-block}
+.skill-name{font-size:0.85rem;color:var(--tw-text-opacity,#fff);opacity:.9}
+
+/* Accessible focus + interaction styles for skills */
+.skill-card{cursor:pointer}
+.skill-card:focus{transform:translateY(-6px) scale(1.03);box-shadow:0 8px 24px rgba(2,6,23,0.6);}
+.skill-card:focus-visible{outline:3px solid rgba(59,130,246,0.14);outline-offset:3px}
+.skill-card img.skill-icon{transition:transform .18s ease, filter .18s ease}
+.skill-card:focus img.skill-icon,.skill-card:hover img.skill-icon{transform:scale(1.08);filter:drop-shadow(0 6px 16px rgba(0,0,0,0.6))}
+
+/* Compact project card styles */
+.card-media { position: relative; overflow: hidden; }
+.card-media img { transition: transform 0.7s ease; display: block; width: 100%; height: 100%; }
+.card-info { pointer-events: none; }
+.card-info .project-meta { max-width: 64%; }
+.card-info p { margin: 0; }
+.card-info .project-meta h3 { margin-top: 0.15rem; margin-bottom: 0.25rem; }
+.card-info .project-meta p { color: rgba(226,237,243,0.78); font-size: 0.9rem; line-height: 1.25; }
+.project-card:hover .card-media img{ transform: none !important; }
+.project-card a:focus .card-info, .project-card a:focus-visible .card-info { outline: 3px solid rgba(99,102,241,0.12); outline-offset: 4px; }
+
+@media (min-width: 1024px) {
+  .card-info .project-meta h3 { font-size: 1.05rem; }
+  .card-info .project-meta p { font-size: 0.95rem; }
+}
+
+/* Badge, overlay and tech tags */
+.card-badge{font-weight:600;letter-spacing:0.02em}
+.card-badge{display:none}
+.tech-tag{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.03)}
+
+/* Pro hover: subtle elevation and reveal a small PRO badge (hover + keyboard focus) */
+.project-card.pro-hover { transition: transform .12s ease, box-shadow .12s ease; }
+.project-card.pro-hover:hover, .project-card.pro-hover:focus-within { transform: translateY(-6px) scale(1.01); box-shadow: 0 14px 36px rgba(2,6,23,0.45); }
+.pro-hover-badge { opacity: 0; transform: translateY(-6px) scale(0.98); transition: opacity .12s ease, transform .12s ease; pointer-events: none; z-index: 40; }
+.project-card.pro-hover:hover .pro-hover-badge, .project-card.pro-hover:focus-within .pro-hover-badge { opacity: 1; transform: translateY(0) scale(1); }
+
+/* Reduce card vertical footprint on small screens */
+@media (max-width: 767px){
+  .card-media{max-height:220px}
+}

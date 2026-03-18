@@ -1,0 +1,56 @@
+name: Generate Skill Image Rasters
+
+on:
+  workflow_dispatch: {}
+  push:
+    paths:
+      - 'images/skills/**'
+
+jobs:
+  generate-rasters:
+    name: Generate raster fallbacks (PNG, WebP, AVIF)
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y imagemagick webp libheif-dev libavif-dev
+          magick -version || convert -version
+
+      - name: Generate rasters from SVGs
+        run: |
+          set -e
+          mkdir -p images/skills/raster
+          for svg in images/skills/*.svg; do
+            name=$(basename "$svg" .svg)
+            png=images/skills/raster/${name}.png
+            webp=images/skills/raster/${name}.webp
+            avif=images/skills/raster/${name}.avif
+            # Rasterize SVG to PNG at 128x128 with transparent background
+            magick convert "$svg" -background none -resize 128x128 "$png"
+            # Convert to WebP and AVIF
+            magick convert "$png" -quality 85 "$webp" || echo "webp conversion failed for $name"
+            magick convert "$png" -quality 55 "$avif" || echo "avif conversion failed for $name"
+            echo "Generated: $png, $webp, $avif"
+          done
+
+      - name: Commit and push generated rasters
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add images/skills/raster || true
+          if ! git diff --cached --quiet; then
+            git commit -m "chore(images): generate skill raster fallbacks"
+            git push
+          else
+            echo "No generated files to commit"
+          fi
