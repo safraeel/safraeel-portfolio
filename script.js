@@ -438,7 +438,7 @@ function initActivityLog() {
     
     // --- GITHUB HEARTBEAT ---
     async function fetchGitHubPulse() {
-        const username = 'bilisatu'; // Based on project URLs
+        const username = 'safraeel'; // Based on project URLs
         const repoEl = document.getElementById('github-repo');
         const commitEl = document.getElementById('github-commit-msg');
         const timeEl = document.getElementById('github-time');

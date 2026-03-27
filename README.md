@@ -40,6 +40,6 @@ MIT — see `LICENSE` for details.
 
 ## Contact
 - Email: [bilisatum@gmail.com](mailto:bilisatum@gmail.com)
-- GitHub: [github.com/bilisatu](https://github.com/bilisatu)
+- GitHub: [github.com/safraeel](https://github.com/safraeel)
 - LinkedIn: [/in/safrael-zako](https://www.linkedin.com/in/safrael-zako)
 - X (Twitter): [@Safraeel](https://x.com/Safraeel)
