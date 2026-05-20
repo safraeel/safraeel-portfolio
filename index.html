@@ -1,53 +1,500 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CINEMA | Film Database</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <style>
-    body { background: #0a0a0a; color: white; font-family: system-ui; }
-    .hero { background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.9)), url('https://picsum.photos/id/1015/1920/1080') center/cover; height: 100vh; }
-    .card { transition: all 0.4s; } .card:hover { transform: scale(1.08); }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.tailwindcss.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:;">
+    
+    <title>Safraeel | Premium Design & Engineering</title>
+    <meta name="description" content="Premium portfolio of Safraeel, blending pixel-perfect design with flawless engineering.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+        <!-- Critical CSS (inlined for FCP/LCP) -->
+        <style>
+            /* Minimal critical styles for above-the-fold */
+            html,body{height:100%;}
+            body{background:#0f1720;color:#e6edf3;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,'Helvetica Neue',sans-serif;margin:0}
+            nav{position:fixed;top:0;left:0;right:0;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+            #home{min-height:90vh;display:flex;align-items:center;justify-content:center;padding:4rem 1.5rem}
+            h1{font-weight:800;margin:0;line-height:1.05;font-size:2.75rem}
+            @media(min-width:768px){h1{font-size:4.5rem}} 
+            .glass{background:rgba(14,18,22,0.6)}
+            .modal-open-btn{cursor:pointer}
+        </style>
+
+        <!-- Preload main stylesheet and important origins -->
+        <link rel="preconnect" href="https://cdn.jsdelivr.net">
+        <link rel="preload" href="style.css?v=1773674084600" as="style" onload="this.rel='stylesheet'">
+        <noscript><link rel="stylesheet" href="style.css?v=1773674084600"></noscript>
+
+        <!-- Preload hero fonts (already preconnected) and defer heavy scripts -->
+        <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" as="style">
+
+        <!-- Defer non-critical scripts to avoid blocking render -->
+        <script defer src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+        <script defer src="https://cdn.tailwindcss.com"></script>
+        <script defer src="tailwind.config.js"></script>
 </head>
-<body>
-  <!-- HERO -->
-  <div class="hero flex items-center justify-center text-center relative">
-    <div class="max-w-4xl px-6">
-      <h1 class="text-8xl font-bold tracking-tighter mb-4">CINEMA</h1>
-      <p class="text-4xl mb-8">Discover. Explore. Watch.</p>
-      <div class="relative max-w-xl mx-auto">
-        <input id="search" type="text" placeholder="Search movies, series..." 
-               class="w-full bg-black/70 border border-white/30 rounded-full py-6 px-8 text-2xl focus:outline-none focus:border-purple-500">
-      </div>
-    </div>
-  </div>
+<body class="bg-zinc-950 text-zinc-100 font-sans antialiased selection:bg-brand-accent selection:text-white flex flex-col min-h-screen">
 
-  <!-- TRENDING -->
-  <div class="px-8 py-12">
-    <h2 class="text-5xl font-bold mb-8">Trending Now 🔥</h2>
-    <div id="movies" class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6"></div>
-  </div>
+    
+      <!-- Navigation -->
+    <nav class="fixed top-0 w-full z-50 glass border-b-0 border-zinc-800/80 transition-all duration-300" id="navbar">
+        <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="#home" class="font-display font-bold text-xl tracking-tight hover:text-brand-accent transition-colors">
+                SAFR<span class="text-brand-accent">AEEL</span>
+            </a>
+            
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8 text-sm font-medium text-zinc-400">
+                <a href="#work" class="hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">Work</a>
+                <a href="#about" class="hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">About</a>
+                <a href="#contact" class="modal-open-btn px-5 py-2.5 rounded-full bg-zinc-100 text-zinc-950 hover:bg-white hover:scale-105 transition-all shadow-[0_0_15px_rgba(255,255,255,0.1)]" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</a>
+            </div>
 
-  <script>
-    const API_KEY = "YOUR_TMDB_KEY_HERE";
-    async function loadMovies() {
-      const res = await fetch(`https://api.themoviedb.org/3/trending/movie/day?api_key=${API_KEY}`);
-      const data = await res.json();
-      const container = document.getElementById('movies');
-      container.innerHTML = data.results.slice(0,12).map(m => `
-        <div class="card bg-zinc-900 rounded-3xl overflow-hidden cursor-pointer">
-          <img src="https://image.tmdb.org/t/p/w500${m.poster_path}" class="w-full">
-          <div class="p-4">
-            <h3 class="font-bold text-xl">${m.title}</h3>
-            <p class="text-sm text-gray-400">${m.release_date} • ⭐ ${m.vote_average}</p>
-          </div>
+            <!-- Mobile Nav Toggle -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 text-zinc-400 hover:text-white focus:outline-none" aria-label="Toggle Menu" aria-expanded="false">
+                <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
-      `).join('');
-    }
-    loadMovies();
-  </script>
+        
+        <!-- Mobile Menu content -->
+        <div id="mobile-menu" class="hidden md:hidden glass border-t border-zinc-800">
+            <div class="flex flex-col p-6 space-y-4 text-center">
+                <a href="#work" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link" onmouseenter="UI_Audio && UI_Audio.playTick()">Work</a>
+                <a href="#about" class="text-zinc-300 hover:text-white font-medium text-lg mobile-link" onmouseenter="UI_Audio && UI_Audio.playTick()">About</a>
+                <button class="modal-open-btn px-5 py-3 rounded-full bg-brand-accent text-white font-medium mx-auto w-2/3 mobile-link" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">Hire Me</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-20">
+        <!-- Hero Section -->
+        <section id="home" class="relative py-32 md:py-52 px-6 flex items-center justify-center min-h-[90vh] overflow-hidden">
+            <div class="absolute inset-0 z-0">
+                <!-- Glowing orb background effect -->
+                <div class="absolute top-1/4 left-1/4 w-[40rem] h-[40rem] bg-brand-accent/20 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 mix-blend-screen opacity-50 animate-fade-in"></div>
+            </div>
+            
+            <div class="max-w-4xl mx-auto relative z-10 text-center animate-slide-up">
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-zinc-900/80 border border-zinc-800 text-xs font-medium text-zinc-300 mb-8 backdrop-blur-sm">
+                    <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    Available for new projects
+                </div>
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white mb-6 leading-[1.1]">
+                    Visual aesthetics.<br />
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-zinc-400 to-zinc-600">Flawless execution.</span>
+                </h1>
+                <p class="text-lg md:text-xl text-zinc-400 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                    I engineer premium digital experiences. Bridging the gap between world-class design and robust, high-performance web architecture.
+                </p>
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <button class="modal-open-btn px-8 py-4 w-full sm:w-auto rounded-full bg-zinc-100 text-zinc-950 font-semibold hover:bg-white hover:scale-105 transition-transform" data-modal="contact-modal" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                        Start a Project
+                    </button>
+                    <a href="#work" class="px-8 py-4 w-full sm:w-auto rounded-full ring-1 ring-zinc-800 bg-zinc-900/50 text-zinc-300 font-medium hover:bg-zinc-800 hover:text-white transition-all backdrop-blur-sm text-center" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                        View Work
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Work Section -->
+        <section id="work" class="py-24 px-6 relative border-t border-zinc-900">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
+                    <div>
+                        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Selected Work</h2>
+                        <p class="text-zinc-400 text-lg">A showcase of recent premium digital products.</p>
+                    </div>
+                    
+                    <!-- Filters -->
+                    <div class="flex flex-wrap gap-2" id="filter-container">
+                        <button class="filter-btn active px-4 py-2 rounded-full text-sm font-medium bg-zinc-100 text-zinc-950 transition-colors" data-filter="all" onmouseenter="UI_Audio && UI_Audio.playTick()">All</button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800" data-filter="saas" onmouseenter="UI_Audio && UI_Audio.playTick()">SaaS</button>
+                        <button class="filter-btn px-4 py-2 rounded-full text-sm font-medium bg-zinc-900 text-zinc-400 hover:bg-zinc-800 hover:text-white transition-colors border border-zinc-800" data-filter="marketing" onmouseenter="UI_Audio && UI_Audio.playTick()">Marketing</button>
+                    </div>
+                </div>
+
+                <!-- Project Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="projects-grid">
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
+                        <a href="https://safraeel-spotify.netlify.app" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/spotify-after.jpg" alt="Spotify Clone UI" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">SaaS App</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Spotify UI Clone</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Interactive music player UI with responsive controls and polished micro-interactions.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">CSS</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">JavaScript</span>
+                                      </div>
+                                  </div>
+                                  <div class="w-10 h-10 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300">
+                                      <svg class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                      </svg>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
+                    </article>
+
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
+                        <a href="https://safraeel-focus.netlify.app" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/focus-after.jpg" alt="Focus Marketing Site" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Marketing Site</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Focus Course Platform</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Conversion-focused marketing site with modular sections and strong visual hierarchy.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Tailwind</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Forms</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
+                    </article>
+
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="saas">
+                        <a href="https://safraeel.github.io/Music-Equalizer/" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/equalizer.jpg" alt="Equalizer App" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Interactive UI</p>
+                                      <h3 class="text-lg font-display font-bold text-white">Music Equalizer</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Mobile-friendly audio visualizer with real-time controls and fun UX details.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">JavaScript</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Canvas</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
+                    </article>
+
+                    <article class="project-card pro-hover glass-card rounded-2xl overflow-hidden group cursor-pointer" data-category="marketing">
+                        <a href="https://launchglow.tech" target="_blank" rel="noopener noreferrer" class="block">
+                          <div class="card-media relative overflow-hidden aspect-[16/9]" style="max-height:320px;">
+                              <div class="pro-hover-badge absolute top-3 right-12 text-xs font-bold px-2 py-0.5 rounded bg-amber-400 text-zinc-900">PRO</div>
+                              <img src="images/ai-saas.jpg" alt="AI SaaS Landing Page" width="1200" height="675" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105" loading="lazy" fetchpriority="low">
+                              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 to-transparent"></div>
+                              
+                              <!-- Live pill removed to keep Pro badge clear -->
+                              <div class="card-info absolute bottom-0 left-0 right-0 p-4 flex items-end justify-between">
+                                  <div>
+                                      <p class="text-emerald-400 text-xs font-medium uppercase tracking-wide">Landing Page</p>
+                                      <h3 class="text-lg font-display font-bold text-white">AI Startup Launch</h3>
+                                      <p class="text-sm text-zinc-300 mt-1 max-w-md">Marketing-first homepage with concise messaging and conversion-focused layout.</p>
+                                      <div class="tech-tags mt-2 flex flex-wrap gap-2">
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">HTML</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Tailwind</span>
+                                          <span class="tech-tag bg-zinc-800/60 text-zinc-300 text-[11px] px-2 py-1 rounded">Analytics</span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section -->
+        <section id="about" class="py-24 px-6 bg-zinc-900/30 border-t border-zinc-900">
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-16 items-center">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6">Built differently.</h2>
+                    <p class="text-zinc-400 text-lg mb-8 leading-relaxed">
+                        I don't just write code or push pixels. I engineer complete digital products optimized for conversion, speed, and aesthetics. Every detail is intentional.
+                    </p>
+                    <!-- Live Status / Heartbeat -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
+                        <!-- Spotify Live Card -->
+                        <div class="glass-card p-5 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+                                <svg class="w-8 h-8 text-brand-accent" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.24 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.24 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.6.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
+                                </svg>
+                            </div>
+                            <div class="flex items-center gap-2 mb-6">
+                                <!-- Animated EQ Bars -->
+                                <div class="flex items-end h-3 gap-[2px]">
+                                    <div class="w-1 bg-brand-accent animate-[pulse_1s_ease-in-out_infinite] h-full" style="animation-duration: 0.8s;"></div>
+                                    <div class="w-1 bg-brand-accent animate-[pulse_1s_ease-in-out_infinite] h-2/3" style="animation-delay: 0.2s; animation-duration: 1.2s;"></div>
+                                    <div class="w-1 bg-brand-accent animate-[pulse_1s_ease-in-out_infinite] h-1/2" style="animation-delay: 0.4s; animation-duration: 0.9s;"></div>
+                                </div>
+                                <span class="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Now Playing</span>
+                            </div>
+                            <div class="flex items-center gap-3 relative z-10">
+                                <img src="https://i.scdn.co/image/ab67616d00001e02ff9ca10b55ce82ae553c8228" alt="Album Art" class="w-10 h-10 rounded shadow-lg animate-[spin_10s_linear_infinite]" id="spotify-art">
+                                <div class="truncate">
+                                    <p class="text-sm font-bold text-white truncate" id="spotify-track">Starboy</p>
+                                    <p class="text-xs text-zinc-400 truncate mt-0.5" id="spotify-artist">The Weeknd</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- GitHub Pulse Card -->
+                        <div class="glass-card p-5 rounded-2xl flex flex-col justify-between relative overflow-hidden group">
+                            <div class="absolute top-0 right-0 p-4 opacity-20 group-hover:opacity-40 transition-opacity">
+                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" />
+                                </svg>
+                            </div>
+                            <div class="flex items-center gap-2 mb-4">
+                                <div class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-[ping_2s_cubic-bezier(0,0,0.2,1)_infinite]"></div>
+                                <span class="text-xs font-semibold text-zinc-400 uppercase tracking-widest">Code Pulse</span>
+                            </div>
+                            <div class="relative z-10 w-full overflow-hidden">
+                                <p class="text-xs font-medium text-emerald-400 font-mono truncate w-full" id="github-repo">Loading heartbeat...</p>
+                                <p class="text-sm font-bold text-white truncate mt-1 w-full" id="github-commit-msg">Fetching live data...</p>
+                                <p class="text-[10px] text-zinc-500 mt-2 font-medium" id="github-time">Waiting for API</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <div class="aspect-square rounded-full bg-gradient-to-tr from-brand-accent/20 to-emerald-500/20 blur-3xl absolute inset-0"></div>
+                    <div class="glass-card p-4 rounded-3xl relative z-10 border border-zinc-800 shadow-2xl">
+                        <img src="images/safraeel.jpg" alt="Safraeel Headshot" width="800" height="800" class="w-full h-auto rounded-xl object-cover grayscale hover:grayscale-0 transition-all duration-500" loading="lazy" fetchpriority="low">
+                    </div>
+                    
+                    <!-- Skills -->
+                    <div class="mt-8">
+                        <h3 class="text-xl font-medium text-white mb-4">Skills & Tools</h3>
+                        <div class="skills-grid" role="list" aria-label="Skills and tools">
+                            <!-- Order: HTML, CSS, JavaScript, TypeScript, React, Tailwind, Node.js, Python -->
+                            <!-- HTML5 -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="HTML5">
+                                <img src="images/skills/html5.svg" alt="HTML5 logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">HTML5</div>
+                            </div>
+
+                            <!-- CSS3 -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="CSS3">
+                                <img src="images/skills/css3.svg" alt="CSS3 logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">CSS3</div>
+                            </div>
+
+                            <!-- JavaScript -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="JavaScript">
+                                <img src="images/skills/javascript.svg" alt="JavaScript logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">JavaScript</div>
+                            </div>
+
+                            <!-- TypeScript -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="TypeScript">
+                                <img src="images/skills/typescript.svg" alt="TypeScript logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">TypeScript</div>
+                            </div>
+
+                            <!-- React -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="React">
+                                <img src="images/skills/react.svg" alt="React logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">React</div>
+                            </div>
+
+                            <!-- Tailwind CSS -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Tailwind CSS">
+                                <img src="images/skills/tailwindcss.svg" alt="Tailwind CSS logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Tailwind CSS</div>
+                            </div>
+
+                            <!-- Node.js -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Node.js">
+                                <img src="images/skills/nodejs.svg" alt="Node.js logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Node.js</div>
+                            </div>
+
+                            <!-- Python -->
+                            <div class="skill-card" tabindex="0" role="listitem" title="Python">
+                                <img src="images/skills/python.svg" alt="Python logo" class="skill-icon" width="48" height="48" loading="lazy" decoding="async" fetchpriority="low">
+                                <div class="skill-name">Python</div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-zinc-900 bg-zinc-950 py-12 px-6 relative">
+        <!-- Floating CMD+K Hint -->
+        <div class="hidden md:flex justify-center mb-8">
+             <button id="cmdk-hint" class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-zinc-800 bg-zinc-900/50 text-zinc-400 hover:text-white hover:bg-zinc-800 transition-colors text-xs font-mono tracking-widest backdrop-blur-sm" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                 PRESS <span class="bg-zinc-800 px-1.5 py-0.5 rounded text-white inline-block">⌘</span> + <span class="bg-zinc-800 px-1.5 py-0.5 rounded text-white inline-block">K</span> TO OPEN COMMAND PALETTE
+             </button>
+        </div>
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-zinc-500 text-sm flex items-center gap-2">
+                © 2026 Safraeel Studio. All rights reserved.
+                <button id="terminal-trigger" class="w-3 h-3 rounded-sm bg-zinc-800/80 hover:bg-zinc-700 transition-colors" aria-label="Terminal Mode" onmouseenter="UI_Audio && UI_Audio.playTick()"></button>
+            </div>
+            <div class="flex items-center gap-6">
+                <a href="https://twitter.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">Twitter</a>
+                <a href="https://github.com/safraeel" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">GitHub</a>
+                <a href="https://www.linkedin.com/in/tuji-zako-abdulahi" target="_blank" rel="noopener noreferrer" class="text-zinc-500 hover:text-white transition-colors" onmouseenter="UI_Audio && UI_Audio.playTick()">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Hidden Hacker Terminal Mode -->
+    <div id="terminal-mode" class="fixed inset-0 z-[500] hidden bg-[#0c0c0c] text-[#00ff00] font-mono p-6 sm:p-10 overflow-hidden flex-col">
+        <div class="absolute inset-0 pointer-events-none opacity-10 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%),linear-gradient(90deg,rgba(255,0,0,0.06),rgba(0,255,0,0.02),rgba(0,0,255,0.06))] bg-[length:100%_4px,3px_100%] z-10"></div>
+        <div class="flex items-center justify-between mb-8 opacity-50 text-xs">
+            <span>SAFRAEEL_OS v2.0.1</span>
+            <button id="terminal-close" class="hover:text-white text-emerald-500 underline underline-offset-4 cursor-default" onmouseenter="UI_Audio && UI_Audio.playTick()">EXIT_TERMINAL</button>
+        </div>
+        
+        <div id="terminal-output" class="flex-grow overflow-y-auto space-y-2 whitespace-pre-wrap pb-4">
+            <div>Initializing Safraeel Studio kernel...</div>
+            <div>[OK] Loaded modules...</div>
+            <div>[OK] Decrypted assets...</div>
+            <br>
+            <div class="text-white">Welcome to Safraeel's console. Type 'help' to see available commands.</div>
+        </div>
+
+        <div class="flex items-center mt-4">
+            <span class="text-emerald-500 mr-2">safraeel@root:~$</span>
+            <input type="text" id="terminal-input" class="flex-grow bg-transparent text-white outline-none border-none caret-emerald-500 cursor-default" autocomplete="off" spellcheck="false" autofocus onkeydown="UI_Audio && UI_Audio.playKeystroke()">
+        </div>
+    </div>
+
+    <!-- Vercel-style God Mode CMD+K Palette -->
+    <div id="cmdk-palette" class="fixed inset-0 z-[200] hidden items-start justify-center pt-[15vh] sm:pt-[20vh] px-4">
+        <!-- Blur Backdrop -->
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-md transition-opacity opacity-0" id="cmdk-backdrop"></div>
+        
+        <!-- Palette Body -->
+        <div id="cmdk-body" class="relative w-full max-w-xl bg-[#111] border border-zinc-800 rounded-2xl shadow-2xl overflow-hidden transform scale-95 opacity-0 transition-all duration-200">
+            
+            <!-- Search Input -->
+            <div class="flex items-center border-b border-zinc-800 px-4 py-3">
+                <svg class="w-5 h-5 text-zinc-400 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+                <input type="text" id="cmdk-input" class="w-full bg-transparent text-white placeholder-zinc-500 focus:outline-none text-lg" placeholder="Type a command or search..." autocomplete="off" spellcheck="false" autofocus>
+                <div class="px-2 py-1 rounded bg-zinc-800 text-[10px] text-zinc-400 font-mono font-bold tracking-widest ml-3">ESC</div>
+            </div>
+
+            <!-- Commands List -->
+            <div class="max-h-[60vh] overflow-y-auto px-2 py-3 space-y-1" id="cmdk-list">
+                
+                <div class="px-3 pb-1 pt-2 text-xs font-semibold text-zinc-500 uppercase tracking-widest cmdk-group-title">Navigation</div>
+                <button class="cmdk-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-zinc-300 hover:bg-brand-accent/20 hover:text-white focus:bg-brand-accent focus:text-white outline-none transition-colors" data-action="scroll" data-target="#work">
+                    <svg class="w-5 h-5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    <span>View Projects</span>
+                </button>
+                <button class="cmdk-item w-full text-left px-3 py-3 rounded-lg flex items-center gap-3 text-zinc-300 hover:bg-brand-accent/20 hover:text-white focus:bg-brand-accent focus:text-white outline-none transition-colors" data-action="scroll" data-target="#about">
+                    <svg class="w-5 h-5 opacity-70" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                    <span>About Me</span>
+                </button>
+
+                <div class="px-3 pb-1 pt-4 text-xs font-semibold text-zinc-500 uppercase tracking-widest cmdk-group-title">Actions</div>
+                <button class="cmdk-item w-full text-left px-3 py-3 rounded-lg flex items-center justify-between text-zinc-300 hover:bg-brand-accent/20 hover:text-white focus:bg-brand-accent focus:text-white outline-none transition-colors" data-action="modal">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-emerald-400 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                        <span>Contact / Hire Me</span>
+                    </div>
+                </button>
+                <button class="cmdk-item w-full text-left px-3 py-3 rounded-lg flex items-center justify-between text-zinc-300 hover:bg-brand-accent/20 hover:text-white focus:bg-brand-accent focus:text-white outline-none transition-colors" data-action="terminal">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 text-emerald-500 opacity-90" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+                        <span class="text-emerald-500 font-mono tracking-wide">Enter Admin Terminal</span>
+                    </div>
+                </button>
+
+                <div class="px-3 pb-1 pt-4 text-xs font-semibold text-zinc-500 uppercase tracking-widest cmdk-group-title">External</div>
+                <button class="cmdk-item w-full text-left px-3 py-3 rounded-lg flex items-center justify-between text-zinc-300 hover:bg-brand-accent/20 hover:text-white focus:bg-brand-accent focus:text-white outline-none transition-colors" data-action="link" data-url="https://github.com/safraeel">
+                    <div class="flex items-center gap-3">
+                        <svg class="w-5 h-5 opacity-70" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"></path></svg>
+                        <span>GitHub Profile</span>
+                    </div>
+                     <svg class="w-4 h-4 text-zinc-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accessible Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 z-[100] hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="fixed inset-0 bg-black/80 backdrop-blur-sm transition-opacity opacity-0 modal-backdrop" aria-hidden="true"></div>
+        
+        <div class="fixed inset-0 z-10 overflow-y-auto">
+            <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0">
+                <div class="modal-panel relative transform overflow-hidden rounded-3xl glass text-left shadow-2xl transition-all sm:my-8 sm:w-full sm:max-w-lg border border-zinc-800 opacity-0 scale-95">
+                    
+                    <button type="button" class="modal-close-btn absolute right-6 top-6 text-zinc-400 hover:text-white bg-zinc-800/50 hover:bg-zinc-800 rounded-full p-2 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-accent" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                        <span class="sr-only">Close form</span>
+                        <svg class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+
+                    <div class="p-8 sm:p-10">
+                        <h3 class="text-2xl font-display font-bold text-white mb-2" id="modal-title">Start a Project</h3>
+                        <p class="text-zinc-400 text-sm mb-8">Fill the form below and I'll get back to you within 24 hours.</p>
+
+                        <form id="hire-form" novalidate class="space-y-5">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-zinc-300 mb-1">Name</label>
+                                <input type="text" id="name" required class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all" placeholder="John Doe">
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-zinc-300 mb-1">Secure Email</label>
+                                <input type="email" id="email" required class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all" placeholder="john@example.com">
+                            </div>
+                            <div>
+                                <label for="details" class="block text-sm font-medium text-zinc-300 mb-1">Project Details</label>
+                                <textarea id="details" rows="4" required class="w-full bg-zinc-950/50 border border-zinc-800 rounded-xl px-4 py-3 text-white placeholder-zinc-600 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:border-transparent transition-all resize-none" placeholder="Tell me about what we are building..."></textarea>
+                            </div>
+                            <div class="pt-2">
+                                <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accentHover text-white font-semibold py-3.5 px-4 rounded-xl transition-all shadow-[0_0_15px_rgba(139,92,246,0.3)] focus:outline-none focus:ring-2 focus:ring-white flex justify-center items-center gap-2" onmouseenter="UI_Audio && UI_Audio.playTick()">
+                                    <span id="submit-text">Send Message</span>
+                                    <svg id="submit-spinner" class="animate-spin h-5 w-5 text-white hidden" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <div id="form-error" class="hidden text-red-500 text-sm mt-2 text-center"></div>
+                            <div id="form-success" class="hidden text-emerald-500 text-sm mt-2 text-center font-medium pl-1 bg-emerald-500/10 py-2 rounded-lg border border-emerald-500/20">Message encrypted and sent successfully!</div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js?v=1773674084602"></script>
 </body>
 </html>
